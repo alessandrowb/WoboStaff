@@ -14,7 +14,8 @@ class WoboTableViewCell: UITableViewCell {
     @IBOutlet weak var userTitleLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     
-    var thisUser :WoboUser? {
+    var thisUser :WoboUser?
+    {
         didSet {
             updateUI()
         }
@@ -43,7 +44,8 @@ class WoboTableViewCell: UITableViewCell {
         userTitleLabel?.text = user.title
     }
     
-    private func setUserImageView (user :WoboUser) {
+    private func setUserImageView (user :WoboUser)
+    {
         let fileUrl = NSURL(string: user.imgUrl)
         if let profileImageURL = fileUrl {
             let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)

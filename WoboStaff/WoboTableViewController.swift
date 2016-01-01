@@ -65,7 +65,8 @@ class WoboTableViewController: UITableViewController {
     
     // MARK: - Private functions
     
-    private func createAlert (alertTitle :String, alertMessage :String, buttonTitle :String) {
+    private func createAlert (alertTitle :String, alertMessage :String, buttonTitle :String)
+    {
         let alertView = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .Alert)
         alertView.addAction(UIAlertAction(title: buttonTitle, style: .Default)
             { action -> Void in
@@ -105,21 +106,24 @@ class WoboTableViewController: UITableViewController {
         }
     }
     
-    private func refresh() {
+    private func refresh()
+    {
         if refreshControl != nil {
             refreshControl?.beginRefreshing()
         }
         refresh(refreshControl)
     }
     
-    @IBAction private func refresh(sender: UIRefreshControl?) {
+    @IBAction private func refresh(sender: UIRefreshControl?)
+    {
         data = hipChatRequest.fetchAndReturnUsers()
         sender?.endRefreshing()
     }
     
     // MARK: - View lifecycle
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(animated: Bool)
+    {
         super.viewDidAppear(animated)
         refresh()
     }
