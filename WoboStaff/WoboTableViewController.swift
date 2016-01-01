@@ -33,7 +33,7 @@ class WoboTableViewController: UITableViewController {
     {
         static let WoboUsersCellIdentifiers = "WoboUserCell"
         static let DateFormatToSort = "yyyy-MM-dd HH:mm:ss"
-        static let DateFormatToDisplay = "M/d/y EEEE h:mm:ss a"
+        static let DateFormatToDisplay = "M/d/y EEE h:mm:ss a"
         static let HeaderColor = UIColor(red: 0.4275, green: 0.6392, blue: 0.7765, alpha: 1.0)
         static let HeaderHeight :CGFloat = 50
         static let HeaderFontSize :CGFloat = 15
@@ -164,6 +164,7 @@ class WoboTableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
+        self.navigationItem.title = "Wobo Staff"
         refresh()
     }
     
@@ -216,7 +217,8 @@ class WoboTableViewController: UITableViewController {
         dateFormatter.dateFormat = Constants.DateFormatToDisplay
         let thisFormattedTime = dateFormatter.stringFromDate(thisTitle!)
         
-        title.text = "Time: " + thisFormattedTime
+        title.text = "Local Time: " + thisFormattedTime
+        title.textAlignment = NSTextAlignment.Center
         title.backgroundColor = Constants.HeaderColor
         title.font = UIFont.boldSystemFontOfSize(Constants.HeaderFontSize)
         
