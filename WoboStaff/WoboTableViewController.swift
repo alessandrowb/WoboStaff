@@ -146,6 +146,8 @@ class WoboTableViewController: UITableViewController {
         refresh(refreshControl)
     }
     
+    // MARK: - Outlets
+    
     @IBAction private func refresh(sender: UIRefreshControl?)
     {
         if connectedToNetwork() {

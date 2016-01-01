@@ -8,18 +8,28 @@
 
 import Foundation
 
-private var hipChatApiUrl = HipChatConfig.HipChatApiUrl
-private var hipChatApiToken = HipChatConfig.HipChatToken
-private var woboFileName = "WoboUsers.json"
-
 class HipChatRequest {
     
-    let request :NSURL? = NSURL(string: hipChatApiUrl+hipChatApiToken)
+    // MARK: - Private structs
+    
+    private struct HipChatConfig {
+        static let HipChatApiUrl = "https://api.hipchat.com/v2/user?expand=items&auth_token="
+        static let HipChatApiToken = ConfigFile.sharedInstance.hipChatToken
+        static let HipChatLocalJson = "WoboUsers.json"
+    }
+    
+    // MARK: - Private variables
+    
+    private var woboFileName = HipChatConfig.HipChatLocalJson
+    
+    private let request :NSURL? = NSURL(string: HipChatConfig.HipChatApiUrl + HipChatConfig.HipChatApiToken)
     
     func returnUrl() -> String
     {
         return request!.absoluteString
     }
+    
+    // MARK: - Public functions
     
     func fetchAndReturnUsers() -> JSON?
     {
@@ -76,4 +86,29 @@ class HipChatRequest {
         }
     }
     
+}
+
+// MARK: - Support Classes
+
+private class ConfigFile
+{
+    class var sharedInstance: ConfigFile {
+        struct Singleton {
+            static let instance = ConfigFile()
+        }
+        return Singleton.instance
+    }
+    
+    private var configValues: NSDictionary!
+    
+    required init() {
+        let filePath = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")!
+        self.configValues = NSDictionary(contentsOfFile:filePath)
+    }
+    
+    var hipChatToken: String {
+        get {
+            return configValues["HipChatToken"] as! String
+        }
+    }
 }

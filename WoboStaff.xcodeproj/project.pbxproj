@@ -7,20 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D22461F01C373F730046B98A /* ConfigSample.plist in Resources */ = {isa = PBXBuildFile; fileRef = D22461EF1C373F730046B98A /* ConfigSample.plist */; };
+		D22461F21C373FD10046B98A /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = D22461F11C373FD10046B98A /* Config.plist */; };
 		D29780671C359D8500317032 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29780661C359D8500317032 /* AppDelegate.swift */; };
 		D29780711C359D8500317032 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D297806F1C359D8500317032 /* LaunchScreen.storyboard */; };
 		D29780791C359DCE00317032 /* HipChatRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29780781C359DCE00317032 /* HipChatRequest.swift */; };
 		D297807B1C35A70F00317032 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D297807A1C35A70F00317032 /* SwiftyJSON.swift */; };
-		D297807D1C35D23000317032 /* HipChatConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D297807C1C35D23000317032 /* HipChatConfig.swift */; };
 		D29780811C35E5B900317032 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D29780801C35E5B900317032 /* Main.storyboard */; };
 		D29780851C35E7A900317032 /* WoboTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29780841C35E7A900317032 /* WoboTableViewController.swift */; };
 		D29780871C36470800317032 /* WoboTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29780861C36470800317032 /* WoboTableViewCell.swift */; };
 		D29F5F961C36F7A100F62E83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D297806D1C359D8500317032 /* Assets.xcassets */; };
-		D29F5F981C370AF700F62E83 /* HipChatConfig.swift.sample in Resources */ = {isa = PBXBuildFile; fileRef = D29F5F971C370AF700F62E83 /* HipChatConfig.swift.sample */; };
 		D2FAF2511C371D100070AB07 /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D2FAF2501C371D100070AB07 /* LaunchImage.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D22461EF1C373F730046B98A /* ConfigSample.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ConfigSample.plist; sourceTree = "<group>"; };
+		D22461F11C373FD10046B98A /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		D29780631C359D8500317032 /* WoboStaff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WoboStaff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D29780661C359D8500317032 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D297806D1C359D8500317032 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -28,11 +30,9 @@
 		D29780721C359D8500317032 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D29780781C359DCE00317032 /* HipChatRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HipChatRequest.swift; sourceTree = "<group>"; };
 		D297807A1C35A70F00317032 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-		D297807C1C35D23000317032 /* HipChatConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HipChatConfig.swift; sourceTree = "<group>"; };
 		D29780801C35E5B900317032 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
 		D29780841C35E7A900317032 /* WoboTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WoboTableViewController.swift; sourceTree = "<group>"; };
 		D29780861C36470800317032 /* WoboTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WoboTableViewCell.swift; sourceTree = "<group>"; };
-		D29F5F971C370AF700F62E83 /* HipChatConfig.swift.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HipChatConfig.swift.sample; sourceTree = "<group>"; };
 		D2FAF2501C371D100070AB07 /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,8 +71,8 @@
 				D29780841C35E7A900317032 /* WoboTableViewController.swift */,
 				D29780661C359D8500317032 /* AppDelegate.swift */,
 				D29780781C359DCE00317032 /* HipChatRequest.swift */,
-				D297807C1C35D23000317032 /* HipChatConfig.swift */,
-				D29F5F971C370AF700F62E83 /* HipChatConfig.swift.sample */,
+				D22461F11C373FD10046B98A /* Config.plist */,
+				D22461EF1C373F730046B98A /* ConfigSample.plist */,
 				D297807A1C35A70F00317032 /* SwiftyJSON.swift */,
 				D297806D1C359D8500317032 /* Assets.xcassets */,
 				D297806F1C359D8500317032 /* LaunchScreen.storyboard */,
@@ -141,11 +141,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D29F5F981C370AF700F62E83 /* HipChatConfig.swift.sample in Resources */,
 				D29780811C35E5B900317032 /* Main.storyboard in Resources */,
+				D22461F01C373F730046B98A /* ConfigSample.plist in Resources */,
 				D29F5F961C36F7A100F62E83 /* Assets.xcassets in Resources */,
 				D2FAF2511C371D100070AB07 /* LaunchImage.png in Resources */,
 				D29780711C359D8500317032 /* LaunchScreen.storyboard in Resources */,
+				D22461F21C373FD10046B98A /* Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,7 +158,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D29780791C359DCE00317032 /* HipChatRequest.swift in Sources */,
-				D297807D1C35D23000317032 /* HipChatConfig.swift in Sources */,
 				D29780851C35E7A900317032 /* WoboTableViewController.swift in Sources */,
 				D29780871C36470800317032 /* WoboTableViewCell.swift in Sources */,
 				D29780671C359D8500317032 /* AppDelegate.swift in Sources */,

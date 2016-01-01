@@ -9,10 +9,14 @@
 import UIKit
 
 class WoboTableViewCell: UITableViewCell {
+    
+    // MARK: - Outlets
 
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userTitleLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
+    
+    // MARK: - Model
     
     var thisUser :WoboUser?
     {
@@ -20,6 +24,8 @@ class WoboTableViewCell: UITableViewCell {
             updateUI()
         }
     }
+    
+    // MARK: - Private functions
     
     private func updateUI()
     {

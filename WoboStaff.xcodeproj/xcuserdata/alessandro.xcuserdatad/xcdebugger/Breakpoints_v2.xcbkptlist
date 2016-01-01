@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WoboStaff/HipChatConfig.swift"
-            timestampString = "473289351.68586"
+            filePath = "WoboStaff/StaffTableViewController.swift"
+            timestampString = "473293966.419406"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
-            landmarkName = "HipChatConfig"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "StaffTableViewController"
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WoboStaff/StaffTableViewController.swift"
-            timestampString = "473293966.419406"
+            filePath = "WoboStaff/HipChatRequest.swift"
+            timestampString = "473383516.875725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "StaffTableViewController"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "HipChatRequest"
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
