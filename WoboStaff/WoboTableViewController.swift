@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SystemConfiguration
 
 // MARK: - Public structs
 
@@ -36,9 +37,14 @@ class WoboTableViewController: UITableViewController {
         static let HeaderColor = UIColor(red: 0.4275, green: 0.6392, blue: 0.7765, alpha: 1.0)
         static let HeaderHeight :CGFloat = 50
         static let HeaderFontSize :CGFloat = 15
+        static let AlertCriticalLevel = "Critical"
+        static let AlertNormalLevel = "Normal"
         static let AlertTitle = "Can't load the data from the network!"
         static let AlertMessage = "Please check your internet connection and try again."
-        static let ButtonTitle = "Retry"
+        static let AlertButtonTitle = "Retry"
+        static let AlertNoConnectionTitle = "Network is not reachable"
+        static let AlertNoConnectionMessage = "Will try to load data from the cache, images won't be downloaded"
+        static let AlertButtonNoConnectionTitle = "Continue"
     }
     
     // MARK: - Private variables
@@ -58,20 +64,24 @@ class WoboTableViewController: UITableViewController {
                 tableView.reloadData()
             }
             else {
-                createAlert(Constants.AlertTitle, alertMessage: Constants.AlertMessage, buttonTitle: Constants.ButtonTitle)
+                let alertView = UIAlertController(title: Constants.AlertTitle, message: Constants.AlertMessage, preferredStyle: .Alert)
+                createAlert(alertView, buttonTitle: Constants.AlertButtonTitle, alertType: Constants.AlertCriticalLevel)
             }
         }
     }
     
     // MARK: - Private functions
     
-    private func createAlert (alertTitle :String, alertMessage :String, buttonTitle :String)
-    {
-        let alertView = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .Alert)
-        alertView.addAction(UIAlertAction(title: buttonTitle, style: .Default)
-            { action -> Void in
-                self.refresh()
-            })
+    private func createAlert (alertView :UIAlertController, buttonTitle :String, alertType :String) {
+        if alertType == Constants.AlertCriticalLevel {
+            alertView.addAction(UIAlertAction(title: buttonTitle, style: .Default)
+                { action -> Void in
+                    self.refresh()
+                })
+        }
+        else {
+            alertView.addAction(UIAlertAction(title: buttonTitle, style: .Default, handler: nil))
+        }
         presentViewController(alertView, animated: true, completion: nil)
     }
     
@@ -106,6 +116,28 @@ class WoboTableViewController: UITableViewController {
         }
     }
     
+    private func connectedToNetwork() -> Bool
+    {
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(sizeofValue(zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        guard let defaultRouteReachability = withUnsafePointer(&zeroAddress, {
+            SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0))
+        }) else {
+            return false
+        }
+        
+        var flags : SCNetworkReachabilityFlags = []
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
+            return false
+        }
+        
+        let isReachable = flags.contains(.Reachable)
+        let needsConnection = flags.contains(.ConnectionRequired)
+        return (isReachable && !needsConnection)
+    }
+    
     private func refresh()
     {
         if refreshControl != nil {
@@ -116,7 +148,14 @@ class WoboTableViewController: UITableViewController {
     
     @IBAction private func refresh(sender: UIRefreshControl?)
     {
-        data = hipChatRequest.fetchAndReturnUsers()
+        if connectedToNetwork() {
+            hipChatRequest.fetchAndSaveUsers()
+        }
+        else {
+            let alertView = UIAlertController(title: Constants.AlertNoConnectionTitle, message: Constants.AlertNoConnectionMessage, preferredStyle: .Alert)
+            createAlert(alertView, buttonTitle: Constants.AlertButtonNoConnectionTitle, alertType: Constants.AlertNormalLevel)
+        }
+        data = hipChatRequest.readUsersFromFile()
         sender?.endRefreshing()
     }
     
