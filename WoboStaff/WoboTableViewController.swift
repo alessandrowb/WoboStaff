@@ -76,6 +76,9 @@ class WoboTableViewController: UITableViewController {
     
     private func parseJson (jsonData :JSON)
     {
+        WoboUsers = []
+        uniqueTimes = []
+        activeWoboTimezones = []
         let myJson = jsonData
         let date = NSDate()
         let dateFormatter = NSDateFormatter()
@@ -110,8 +113,7 @@ class WoboTableViewController: UITableViewController {
     }
     
     @IBAction private func refresh(sender: UIRefreshControl?) {
-        hipChatRequest.fetchAndSaveUsers()
-        data = hipChatRequest.readUsersFromFile()
+        data = hipChatRequest.fetchAndReturnUsers()
         sender?.endRefreshing()
     }
     
