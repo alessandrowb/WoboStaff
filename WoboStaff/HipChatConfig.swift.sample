@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct HipChatConfig {
+struct HipChatConfig {
     static let HipChatApiUrl = "https://api.hipchat.com/v2/user?expand=items&auth_token="
     static let HipChatToken = "YOURTOKEN"
 }
