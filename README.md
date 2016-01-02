@@ -7,7 +7,7 @@ The app also stores a local copy of the data retrieved and it will try to use it
 
 <div align="center">
         <img width="45%" height="640px" src="/../screenshots/sc1.jpg" alt="Sc1.jpg"</img>
-        <img height="0" width="10%">
+        <img height="0" width="10px">
         <img width="45%" height="640px" src="/../screenshots/sc2.jpg" alt="Sc2.jpg"</img>
 </div>
 
