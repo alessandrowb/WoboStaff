@@ -6,9 +6,9 @@ The app will retrieve the list of Wobo users using the HipChat API and it will g
 The app also stores a local copy of the data retrieved and it will try to use it if there is no network connection available.
 
 <div align="center">
-        <img width="45%" src="/../screenshots/sc1.jpg" alt="Sc1.jpg"</img>
-        <img height="0" width="8px">
-        <img width="45%" src="/../screenshots/sc2.jpg" alt="Sc2.jpg"</img>
+        <img width="45%" height="640px" src="/../screenshots/sc1.jpg" alt="Sc1.jpg"</img>
+        <img height="0" width="10%">
+        <img width="45%" height="640px" src="/../screenshots/sc2.jpg" alt="Sc2.jpg"</img>
 </div>
 
 
