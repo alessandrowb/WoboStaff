@@ -2,7 +2,7 @@
 
 **Installation**
 
-Add a valid HipChat API Token in the Config.plist file.
+Rename ConfigSample.plist to Config.plist and add a valid HipChat API Token.
 
 **Summary**
 
