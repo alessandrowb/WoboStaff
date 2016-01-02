@@ -17,6 +17,7 @@ struct WoboUser
     let title :String
     let imgUrl :String
     let localFormattedTime :String
+    let onlineStatus :String
 }
 
 class WoboTableViewController: UITableViewController {
@@ -74,7 +75,8 @@ class WoboTableViewController: UITableViewController {
     
     // MARK: - Private functions
     
-    private func createAlert (alertView :UIAlertController, buttonTitle :String, alertType :String) {
+    private func createAlert (alertView :UIAlertController, buttonTitle :String, alertType :String)
+    {
         if alertType == Constants.AlertCriticalLevel {
             alertView.addAction(UIAlertAction(title: buttonTitle, style: .Default)
                 { action -> Void in
@@ -100,7 +102,11 @@ class WoboTableViewController: UITableViewController {
         for (_,subJson):(String, JSON) in myJson["items"] {
             dateFormatter.timeZone = NSTimeZone(name: subJson["timezone"].string!)
             let thisFormattedTime = dateFormatter.stringFromDate(date)
-            let thisUser = WoboUser(name: subJson["name"].string!, title: subJson["title"].string!, imgUrl: subJson["photo_url"].string!, localFormattedTime: thisFormattedTime)
+            var thisUserStatus = "offline"
+            if subJson["presence"]["show"] != nil {
+                thisUserStatus = getUserStatus(subJson["presence"]["show"].string!)
+            }
+            let thisUser = WoboUser(name: subJson["name"].string!, title: subJson["title"].string!, imgUrl: subJson["photo_url"].string!, localFormattedTime: thisFormattedTime, onlineStatus: thisUserStatus)
             WoboUsers.append(thisUser)
             if uniqueTimes.contains(thisFormattedTime) == false {
                 uniqueTimes.append(thisFormattedTime)
@@ -115,6 +121,22 @@ class WoboTableViewController: UITableViewController {
             let filteredWoboUsersArray = WoboUsers.filter{$0.localFormattedTime == thisTime}
             let thisActiveWoboTimeZone = WoboTimeZone(timezone: thisTime, usersInThisTimezone: filteredWoboUsersArray)
             activeWoboTimezones.append(thisActiveWoboTimeZone)
+        }
+    }
+    
+    private func getUserStatus (userStatus :String) -> String
+    {
+        switch (userStatus) {
+            case "away":
+                return "away"
+            case "chat":
+                return "online"
+            case "dnd":
+                return "dnd"
+            case "xa":
+                return "mobile"
+            default:
+                return "unknown"
         }
     }
     

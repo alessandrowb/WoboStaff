@@ -15,6 +15,7 @@ class WoboTableViewCell: UITableViewCell {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userTitleLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var userOnlineStatusLabel: UILabel!
     
     // MARK: - Model
     
@@ -25,17 +26,30 @@ class WoboTableViewCell: UITableViewCell {
         }
     }
     
+    // MARK: - Private structs
+    
+    private struct Constants {
+        static let onlineColor = UIColor.greenColor()
+        static let awayColor = UIColor.yellowColor()
+        static let dndColor = UIColor.brownColor()
+        static let mobileColor = UIColor.blueColor()
+        static let offlineColor = UIColor.redColor()
+        static let defaultColor = UIColor.blackColor()
+    }
+    
     // MARK: - Private functions
     
     private func updateUI()
     {
         userNameLabel?.text = nil
         userTitleLabel?.text = nil
+        userOnlineStatusLabel?.text = nil
         userImage?.image = nil
         
         if let thisUser = self.thisUser {
             setUserNameLabel(thisUser)
             setUserTitleLabel(thisUser)
+            setUserOnlineStatus(thisUser)
             setUserImageView(thisUser)
         }
     }
@@ -48,6 +62,27 @@ class WoboTableViewCell: UITableViewCell {
     private func setUserTitleLabel (user :WoboUser)
     {
         userTitleLabel?.text = user.title
+    }
+    
+    private func setUserOnlineStatus (user: WoboUser)
+    {
+        var statusColor = Constants.defaultColor
+        switch user.onlineStatus {
+            case "away":
+                statusColor = Constants.awayColor
+            case "online":
+                statusColor = Constants.onlineColor
+            case "dnd":
+                statusColor = Constants.dndColor
+            case "xa":
+                statusColor = Constants.mobileColor
+            case "offline":
+                statusColor = Constants.offlineColor
+            default:
+                break
+        }
+        userOnlineStatusLabel?.text = user.onlineStatus
+        userOnlineStatusLabel?.textColor = statusColor
     }
     
     private func setUserImageView (user :WoboUser)

@@ -29,7 +29,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZoB-Us-Vwh">
-                                            <rect key="frame" x="88" y="30" width="504" height="78"/>
+                                            <rect key="frame" x="88" y="30" width="504" height="45"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -41,17 +41,25 @@
                                                 <constraint firstAttribute="width" constant="80" id="lhX-Z9-IIs"/>
                                             </constraints>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3n-gG-MtC">
+                                            <rect key="frame" x="88" y="83" width="38" height="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="a3n-gG-MtC" firstAttribute="top" secondItem="ZoB-Us-Vwh" secondAttribute="bottom" constant="8" id="1q4-j2-Wom"/>
                                         <constraint firstItem="JFY-RU-OIM" firstAttribute="top" secondItem="Oqd-3x-WrF" secondAttribute="top" id="A1a-tZ-zZr"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="Oqd-3x-WrF" secondAttribute="leading" id="Dz0-xw-7sc"/>
                                         <constraint firstItem="ZoB-Us-Vwh" firstAttribute="width" secondItem="JFY-RU-OIM" secondAttribute="width" id="JgG-HS-R0p"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Oqd-3x-WrF" secondAttribute="bottom" id="TGd-YM-J0g"/>
+                                        <constraint firstItem="a3n-gG-MtC" firstAttribute="leading" secondItem="ZoB-Us-Vwh" secondAttribute="leading" id="a0O-hJ-Bm5"/>
                                         <constraint firstItem="ZoB-Us-Vwh" firstAttribute="top" secondItem="JFY-RU-OIM" secondAttribute="bottom" id="d83-yO-enS"/>
                                         <constraint firstItem="ZoB-Us-Vwh" firstAttribute="leading" secondItem="Oqd-3x-WrF" secondAttribute="trailing" id="eIM-rc-IWB"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="ZoB-Us-Vwh" secondAttribute="bottom" id="gF1-qa-mg0"/>
                                         <constraint firstItem="JFY-RU-OIM" firstAttribute="leading" secondItem="Oqd-3x-WrF" secondAttribute="trailing" id="ig8-du-Kve"/>
                                         <constraint firstAttribute="topMargin" secondItem="Oqd-3x-WrF" secondAttribute="top" id="jWe-av-Iax"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="a3n-gG-MtC" secondAttribute="bottom" constant="8" id="mIZ-If-eJW"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="JFY-RU-OIM" secondAttribute="trailing" id="wzi-HY-RTN"/>
                                         <constraint firstAttribute="topMargin" secondItem="JFY-RU-OIM" secondAttribute="top" id="yCf-Z6-NDs"/>
                                     </constraints>
@@ -59,6 +67,7 @@
                                 <connections>
                                     <outlet property="userImage" destination="Oqd-3x-WrF" id="W1n-lg-SSv"/>
                                     <outlet property="userNameLabel" destination="JFY-RU-OIM" id="hq0-Zk-ozL"/>
+                                    <outlet property="userOnlineStatusLabel" destination="a3n-gG-MtC" id="BvF-ZU-cmU"/>
                                     <outlet property="userTitleLabel" destination="ZoB-Us-Vwh" id="3K1-fV-fb0"/>
                                 </connections>
                             </tableViewCell>
