@@ -24,12 +24,12 @@ class HipChatRequest {
     
     private let request :NSURL? = NSURL(string: HipChatConfig.HipChatApiUrl + HipChatConfig.HipChatApiToken)
     
+    // MARK: - Public functions
+    
     func returnUrl() -> String
     {
         return request!.absoluteString
     }
-    
-    // MARK: - Public functions
     
     func fetchAndReturnUsers() -> JSON?
     {
