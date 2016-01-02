@@ -37,6 +37,8 @@ class WoboTableViewController: UITableViewController {
         static let HeaderColor = UIColor(red: 0.4275, green: 0.6392, blue: 0.7765, alpha: 1.0)
         static let HeaderHeight :CGFloat = 50
         static let HeaderFontSize :CGFloat = 15
+        static let OddRowsColor = UIColor.lightGrayColor()
+        static let EvenRowsColor = UIColor.whiteColor()
         static let AlertCriticalLevel = "Critical"
         static let AlertNormalLevel = "Normal"
         static let AlertTitle = "Can't load the data from the network!"
@@ -194,9 +196,9 @@ class WoboTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(Constants.WoboUsersCellIdentifiers, forIndexPath: indexPath) as! WoboTableViewCell
         
         if indexPath.row % 2 == 0 {
-            cell.backgroundColor = UIColor.lightGrayColor()
+            cell.backgroundColor = Constants.OddRowsColor
         } else {
-            cell.backgroundColor = UIColor.whiteColor()
+            cell.backgroundColor = Constants.EvenRowsColor
         }
         
         cell.thisUser = activeWoboTimezones[indexPath.section].usersInThisTimezone[indexPath.row]
