@@ -2,8 +2,8 @@
 
 **Installation:** Add a valid HipChat API Token in the Config.plist file.
 
-The app will retrieve the list of Wobo users using the HipChat API and it will group them by timezone.
-The app also stores a local copy of the data retrieved and it will try to use it if there is no network connection available.
+The app will use the HipChat API to retrieve the list of the Wobo employees and it will display them grouped by their timezones.
+The app stores a local copy of the data retrieved and it will try to use it if there is no network connection available.
 
 <div align="center">
         <img width="45%" height="640px" src="/../screenshots/sc1.jpg" alt="Sc1.jpg"</img>
