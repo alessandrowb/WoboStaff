@@ -8,10 +8,10 @@
 
 class WoboUser {
     
-    var name :String?
-    var title :String?
-    var imgUrl :String?
-    var localFormattedTime :String?
-    var onlineStatus :String?
+    var name: String?
+    var title: String?
+    var imgUrl: String?
+    var localFormattedTime: String?
+    var onlineStatus: String?
     
 }

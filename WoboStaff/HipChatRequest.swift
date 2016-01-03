@@ -15,18 +15,16 @@ class HipChatRequest {
     private struct HipChatConfig
     {
         static let hipChatApiUrl = "https://api.hipchat.com/v2/user?expand=items&auth_token="
-        static let hipChatApiToken = ConfigFile.sharedInstance.hipChatToken
+        static let hipChatApiToken = HipChatConfigFile.sharedInstance.hipChatToken
         static let hipChatLocalJson = "WoboUsers.json"
         static let hipChatUnknownUserStatus = "Unknown"
     }
     
-    private var hipChatUserStatusesMap :[String: String] = ["away": "Idle", "chat": "Online", "dnd": "Busy", "xa": "Mobile"]
-    
     // MARK: - Private variables
     
     private var woboFileName = HipChatConfig.hipChatLocalJson
-    
-    private let request :NSURL? = NSURL(string: HipChatConfig.hipChatApiUrl + HipChatConfig.hipChatApiToken)
+    private let request: NSURL? = NSURL(string: HipChatConfig.hipChatApiUrl + HipChatConfig.hipChatApiToken)
+    private var hipChatUserStatusesMap: [String: String] = ["away": "Idle", "chat": "Online", "dnd": "Busy", "xa": "Mobile"]
     
     // MARK: - Public functions
     
@@ -60,7 +58,7 @@ class HipChatRequest {
                 try NSJSONSerialization.JSONObjectWithData(data, options: []) as! NSDictionary
                 let json = JSON(data: data)
                 let data = json.rawString()!.dataUsingEncoding(NSUTF8StringEncoding)!
-                if let dir : NSString = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first {
+                if let dir: NSString = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first {
                     let path = dir.stringByAppendingPathComponent(woboFileName);
                     data.writeToFile(path, atomically: false)
                 }
@@ -73,10 +71,10 @@ class HipChatRequest {
     
     func readUsersFromFile() -> JSON?
     {
-        if let dir : NSString = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first {
+        if let dir: NSString = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first {
             let path = dir.stringByAppendingPathComponent(woboFileName);
             let jsonString = NSData(contentsOfFile: path)
-            if let json :JSON? = JSON(data: jsonString!) {
+            if let json: JSON? = JSON(data: jsonString!) {
                 return json
             }
             else {
@@ -90,7 +88,7 @@ class HipChatRequest {
         }
     }
     
-    func getUserStatus(userStatus :String) -> String
+    func getUserStatus(userStatus: String) -> String
     {
         if let thisStatus = hipChatUserStatusesMap[userStatus] {
             return thisStatus
@@ -100,29 +98,4 @@ class HipChatRequest {
         }
     }
     
-}
-
-// MARK: - Support Classes
-
-private class ConfigFile
-{
-    class var sharedInstance: ConfigFile {
-        struct Singleton {
-            static let instance = ConfigFile()
-        }
-        return Singleton.instance
-    }
-    
-    private var configValues: NSDictionary!
-    
-    required init() {
-        let filePath = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")!
-        self.configValues = NSDictionary(contentsOfFile:filePath)
-    }
-    
-    var hipChatToken: String {
-        get {
-            return configValues["HipChatToken"] as! String
-        }
-    }
 }

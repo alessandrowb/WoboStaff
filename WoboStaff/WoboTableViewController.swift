@@ -15,8 +15,8 @@ class WoboTableViewController: UITableViewController {
     
     private struct WoboTimeZone
     {
-        let timezone :String
-        let usersInThisTimezone :[WoboUser]
+        let timezone: String
+        let usersInThisTimezone: [WoboUser]
     }
     
     private struct Constants
@@ -25,8 +25,8 @@ class WoboTableViewController: UITableViewController {
         static let dateFormatToSort = "yyyy-MM-dd HH:mm:ss"
         static let dateFormatToDisplay = "M/d/y EEE h:mm:ss a"
         static let headerColor = UIColor(red: 0.4275, green: 0.6392, blue: 0.7765, alpha: 1.0)
-        static let headerHeight :CGFloat = 50
-        static let headerFontSize :CGFloat = 15
+        static let headerHeight: CGFloat = 50
+        static let headerFontSize: CGFloat = 15
         static let oddRowsColor = UIColor.lightGrayColor()
         static let evenRowsColor = UIColor.whiteColor()
         static let alertCriticalLevel = "Critical"
@@ -43,14 +43,14 @@ class WoboTableViewController: UITableViewController {
     
     // MARK: - Private variables
     
-    private var WoboUsers :[WoboUser] = []
-    private var uniqueTimes :[String] = []
-    private var activeWoboTimezones :[WoboTimeZone] = []
+    private var WoboUsers: [WoboUser] = []
+    private var uniqueTimes: [String] = []
+    private var activeWoboTimezones: [WoboTimeZone] = []
     private var networkIsAvailable = false
     
-    private let hipChatRequest :HipChatRequest = HipChatRequest()
+    private let hipChatRequest: HipChatRequest = HipChatRequest()
     
-    private var data :JSON?
+    private var data: JSON?
     {
         didSet {
             if (data != nil) {
@@ -67,7 +67,7 @@ class WoboTableViewController: UITableViewController {
     
     // MARK: - Private functions
     
-    private func createAlert (alertView :UIAlertController, buttonTitle :String, alertType :String)
+    private func createAlert (alertView: UIAlertController, buttonTitle: String, alertType: String)
     {
         if alertType == Constants.alertCriticalLevel {
             alertView.addAction(UIAlertAction(title: buttonTitle, style: .Default)
@@ -81,7 +81,7 @@ class WoboTableViewController: UITableViewController {
         presentViewController(alertView, animated: true, completion: nil)
     }
     
-    private func parseJson (jsonData :JSON)
+    private func parseJson (jsonData: JSON)
     {
         WoboUsers.removeAll()
         uniqueTimes.removeAll()
@@ -95,7 +95,7 @@ class WoboTableViewController: UITableViewController {
             dateFormatter.timeZone = NSTimeZone(name: subJson["timezone"].string!)
             let thisFormattedTime = dateFormatter.stringFromDate(date)
             var thisUserStatus = Constants.defaultUserStatus
-            if networkIsAvailable == true {
+            if networkIsAvailable {
                 if subJson["presence"]["show"] != nil {
                     thisUserStatus = hipChatRequest.getUserStatus(subJson["presence"]["show"].string!)
                 }
@@ -110,7 +110,7 @@ class WoboTableViewController: UITableViewController {
             thisUser.localFormattedTime = thisFormattedTime
             thisUser.onlineStatus = thisUserStatus
             WoboUsers.append(thisUser)
-            if uniqueTimes.contains(thisFormattedTime) == false {
+            if !uniqueTimes.contains(thisFormattedTime) {
                 uniqueTimes.append(thisFormattedTime)
             }
         }
@@ -138,7 +138,7 @@ class WoboTableViewController: UITableViewController {
             return false
         }
         
-        var flags : SCNetworkReachabilityFlags = []
+        var flags: SCNetworkReachabilityFlags = []
         if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
             return false
         }

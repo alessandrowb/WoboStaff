@@ -19,7 +19,7 @@ class WoboTableViewCell: UITableViewCell {
     
     // MARK: - Model
     
-    var thisUser :WoboUser?
+    var thisUser: WoboUser?
     {
         didSet {
             updateUI()
@@ -57,12 +57,12 @@ class WoboTableViewCell: UITableViewCell {
     
     // MARK: - Wobo Cell Content
     
-    private func setUserNameLabel (user :WoboUser)
+    private func setUserNameLabel (user: WoboUser)
     {
         userNameLabel?.text = user.name
     }
     
-    private func setUserTitleLabel (user :WoboUser)
+    private func setUserTitleLabel (user: WoboUser)
     {
         userTitleLabel?.text = user.title
     }
@@ -90,29 +90,11 @@ class WoboTableViewCell: UITableViewCell {
         userOnlineStatusLabel?.textColor = statusColor
     }
     
-    private func setCacheImage (user :WoboUser)
+    private func setCacheImage (user: WoboUser)
     {
         if user.imgUrl != nil {
             cache.getImage(user.imgUrl!, imageView: userImage)
         }
     }
 
-}
-
-// MARK: - Support Classes
-
-class UIBorderedLabel: UILabel {
-    
-    var topInset:       CGFloat = 0
-    var rightInset:     CGFloat = 0
-    var bottomInset:    CGFloat = 0
-    var leftInset:      CGFloat = 5
-    
-    override func drawTextInRect(rect: CGRect)
-    {
-        let insets: UIEdgeInsets = UIEdgeInsets(top: self.topInset, left: self.leftInset, bottom: self.bottomInset, right: self.rightInset)
-        self.setNeedsLayout()
-        return super.drawTextInRect(UIEdgeInsetsInsetRect(rect, insets))
-    }
-    
 }
