@@ -12,10 +12,10 @@ class WoboTableViewCell: UITableViewCell {
     
     // MARK: - Outlets
 
-    @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var userTitleLabel: UILabel!
+    @IBOutlet weak var userNameLabel: UIBorderedLabel!
+    @IBOutlet weak var userTitleLabel: UIBorderedLabel!
     @IBOutlet weak var userImage: UIImageView!
-    @IBOutlet weak var userOnlineStatusLabel: UILabel!
+    @IBOutlet weak var userOnlineStatusLabel: UIBorderedLabel!
     
     // MARK: - Model
     
@@ -28,10 +28,11 @@ class WoboTableViewCell: UITableViewCell {
     
     // MARK: - Private structs
     
-    private struct Constants {
+    private struct Constants
+    {
         static let onlineColor = UIColor.greenColor()
-        static let awayColor = UIColor.yellowColor()
-        static let dndColor = UIColor.brownColor()
+        static let awayColor = UIColor(red: 0.8275, green: 0.8275, blue: 0.3804, alpha: 1.0) /* #d3d361 */
+        static let dndColor = UIColor.orangeColor()
         static let mobileColor = UIColor.blueColor()
         static let offlineColor = UIColor.redColor()
         static let defaultColor = UIColor.blackColor()
@@ -69,19 +70,21 @@ class WoboTableViewCell: UITableViewCell {
     private func setUserOnlineStatus (user: WoboUser)
     {
         var statusColor = Constants.defaultColor
-        switch user.onlineStatus {
-            case "away":
-                statusColor = Constants.awayColor
-            case "online":
-                statusColor = Constants.onlineColor
-            case "dnd":
-                statusColor = Constants.dndColor
-            case "xa":
-                statusColor = Constants.mobileColor
-            case "offline":
-                statusColor = Constants.offlineColor
-            default:
-                break
+        if user.onlineStatus != nil {
+            switch user.onlineStatus! {
+                case "Idle":
+                    statusColor = Constants.awayColor
+                case "Online":
+                    statusColor = Constants.onlineColor
+                case "Busy":
+                    statusColor = Constants.dndColor
+                case "Mobile":
+                    statusColor = Constants.mobileColor
+                case "Offline":
+                    statusColor = Constants.offlineColor
+                default:
+                    break
+            }
         }
         userOnlineStatusLabel?.text = user.onlineStatus
         userOnlineStatusLabel?.textColor = statusColor
@@ -89,7 +92,27 @@ class WoboTableViewCell: UITableViewCell {
     
     private func setCacheImage (user :WoboUser)
     {
-        cache.getImage(user.imgUrl, imageView: userImage)
+        if user.imgUrl != nil {
+            cache.getImage(user.imgUrl!, imageView: userImage)
+        }
     }
 
+}
+
+// MARK: - Support Classes
+
+class UIBorderedLabel: UILabel {
+    
+    var topInset:       CGFloat = 0
+    var rightInset:     CGFloat = 0
+    var bottomInset:    CGFloat = 0
+    var leftInset:      CGFloat = 5
+    
+    override func drawTextInRect(rect: CGRect)
+    {
+        let insets: UIEdgeInsets = UIEdgeInsets(top: self.topInset, left: self.leftInset, bottom: self.bottomInset, right: self.rightInset)
+        self.setNeedsLayout()
+        return super.drawTextInRect(UIEdgeInsetsInsetRect(rect, insets))
+    }
+    
 }

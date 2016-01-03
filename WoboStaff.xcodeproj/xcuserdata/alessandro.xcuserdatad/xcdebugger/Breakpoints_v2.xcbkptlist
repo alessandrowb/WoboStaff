@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WoboStaff/HipChatRequest.swift"
-            timestampString = "473453030.962586"
+            timestampString = "473536529.174002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "HipChatRequest"
             landmarkType = "3">
          </BreakpointContent>

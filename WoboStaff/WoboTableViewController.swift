@@ -9,19 +9,7 @@
 import UIKit
 import SystemConfiguration
 
-// MARK: - Public structs
-
-struct WoboUser
-{
-    let name :String
-    let title :String
-    let imgUrl :String
-    let localFormattedTime :String
-    let onlineStatus :String
-}
-
 class WoboTableViewController: UITableViewController {
-    
     
     // MARK: - Private structs
     
@@ -103,11 +91,16 @@ class WoboTableViewController: UITableViewController {
         for (_,subJson):(String, JSON) in myJson["items"] {
             dateFormatter.timeZone = NSTimeZone(name: subJson["timezone"].string!)
             let thisFormattedTime = dateFormatter.stringFromDate(date)
-            var thisUserStatus = "offline"
+            var thisUserStatus = "Offline"
             if subJson["presence"]["show"] != nil {
-                thisUserStatus = getUserStatus(subJson["presence"]["show"].string!)
+                thisUserStatus = hipChatRequest.getUserStatus(subJson["presence"]["show"].string!)
             }
-            let thisUser = WoboUser(name: subJson["name"].string!, title: subJson["title"].string!, imgUrl: subJson["photo_url"].string!, localFormattedTime: thisFormattedTime, onlineStatus: thisUserStatus)
+            let thisUser = WoboUser()
+            thisUser.name = subJson["name"].string!
+            thisUser.title = subJson["title"].string!
+            thisUser.imgUrl = subJson["photo_url"].string!
+            thisUser.localFormattedTime = thisFormattedTime
+            thisUser.onlineStatus = thisUserStatus
             WoboUsers.append(thisUser)
             if uniqueTimes.contains(thisFormattedTime) == false {
                 uniqueTimes.append(thisFormattedTime)
@@ -122,22 +115,6 @@ class WoboTableViewController: UITableViewController {
             let filteredWoboUsersArray = WoboUsers.filter{$0.localFormattedTime == thisTime}
             let thisActiveWoboTimeZone = WoboTimeZone(timezone: thisTime, usersInThisTimezone: filteredWoboUsersArray)
             activeWoboTimezones.append(thisActiveWoboTimeZone)
-        }
-    }
-    
-    private func getUserStatus (userStatus :String) -> String
-    {
-        switch (userStatus) {
-            case "away":
-                return "away"
-            case "chat":
-                return "online"
-            case "dnd":
-                return "dnd"
-            case "xa":
-                return "mobile"
-            default:
-                return "unknown"
         }
     }
     

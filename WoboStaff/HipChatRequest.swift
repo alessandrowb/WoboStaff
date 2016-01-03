@@ -12,11 +12,15 @@ class HipChatRequest {
     
     // MARK: - Private structs
     
-    private struct HipChatConfig {
+    private struct HipChatConfig
+    {
         static let hipChatApiUrl = "https://api.hipchat.com/v2/user?expand=items&auth_token="
         static let hipChatApiToken = ConfigFile.sharedInstance.hipChatToken
         static let hipChatLocalJson = "WoboUsers.json"
+        static let hipChatUnknownUserStatus = "unknown"
     }
+    
+    private var hipChatUserStatusesMap :[String: String] = ["away": "Idle", "chat": "Online", "dnd": "Busy", "xa": "Mobile"]
     
     // MARK: - Private variables
     
@@ -83,6 +87,16 @@ class HipChatRequest {
         else {
             //Could not access file system
             return nil
+        }
+    }
+    
+    func getUserStatus(userStatus :String) -> String
+    {
+        if let thisStatus = hipChatUserStatusesMap[userStatus] {
+            return thisStatus
+        }
+        else {
+            return HipChatConfig.hipChatUnknownUserStatus
         }
     }
     
