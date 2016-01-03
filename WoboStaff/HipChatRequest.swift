@@ -17,7 +17,7 @@ class HipChatRequest {
         static let hipChatApiUrl = "https://api.hipchat.com/v2/user?expand=items&auth_token="
         static let hipChatApiToken = ConfigFile.sharedInstance.hipChatToken
         static let hipChatLocalJson = "WoboUsers.json"
-        static let hipChatUnknownUserStatus = "unknown"
+        static let hipChatUnknownUserStatus = "Unknown"
     }
     
     private var hipChatUserStatusesMap :[String: String] = ["away": "Idle", "chat": "Online", "dnd": "Busy", "xa": "Mobile"]

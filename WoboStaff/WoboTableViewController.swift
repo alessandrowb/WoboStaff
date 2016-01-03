@@ -37,6 +37,8 @@ class WoboTableViewController: UITableViewController {
         static let alertNoConnectionTitle = "Network is not reachable"
         static let alertNoConnectionMessage = "Will try to load data from the cache"
         static let alertButtonNoConnectionTitle = "Continue"
+        static let defaultUserStatus = "Offline"
+        static let noNetworkUserStatus = "Unknown (network not available)"
     }
     
     // MARK: - Private variables
@@ -44,6 +46,7 @@ class WoboTableViewController: UITableViewController {
     private var WoboUsers :[WoboUser] = []
     private var uniqueTimes :[String] = []
     private var activeWoboTimezones :[WoboTimeZone] = []
+    private var networkIsAvailable = false
     
     private let hipChatRequest :HipChatRequest = HipChatRequest()
     
@@ -91,9 +94,14 @@ class WoboTableViewController: UITableViewController {
         for (_,subJson):(String, JSON) in myJson["items"] {
             dateFormatter.timeZone = NSTimeZone(name: subJson["timezone"].string!)
             let thisFormattedTime = dateFormatter.stringFromDate(date)
-            var thisUserStatus = "Offline"
-            if subJson["presence"]["show"] != nil {
-                thisUserStatus = hipChatRequest.getUserStatus(subJson["presence"]["show"].string!)
+            var thisUserStatus = Constants.defaultUserStatus
+            if networkIsAvailable == true {
+                if subJson["presence"]["show"] != nil {
+                    thisUserStatus = hipChatRequest.getUserStatus(subJson["presence"]["show"].string!)
+                }
+            }
+            else {
+                thisUserStatus = Constants.noNetworkUserStatus
             }
             let thisUser = WoboUser()
             thisUser.name = subJson["name"].string!
@@ -152,7 +160,8 @@ class WoboTableViewController: UITableViewController {
     
     @IBAction private func refresh(sender: UIRefreshControl?)
     {
-        if connectedToNetwork() {
+        networkIsAvailable = connectedToNetwork()
+        if networkIsAvailable {
             hipChatRequest.fetchAndSaveUsers()
         }
         else {
