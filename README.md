@@ -19,12 +19,14 @@ The app also stores a local copy of the data retrieved and it will try to use it
 
 **ToDo List**
 
-1) Add more users information (eg. online status) (DONE, BUT NEEDS TO BE REFACTORED)
+1) Add more users information (eg. online status, title) (DONE)
 
-2) Store a cached copy of the images (DONE)
+2) Improved UI (colors, padding) (DONE)
 
-3) Search field to filter the list of users
+3) Store a cached copy of the images (DONE)
 
-4) When clicking on a specific user, open a new screen with more details (maybe allow to send a message)
+4) Search field to filter the list of users
 
-5) Add a setting tab to add/update the API token from the app (at that point, this could be reworked into a generic HipChat app)
+5) When clicking on a specific user, open a new screen with more details (maybe allow to send a message)
+
+6) Add a setting tab to add/update the API token from the app (at that point, this could be reworked into a generic HipChat app)
