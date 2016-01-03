@@ -19,9 +19,9 @@ The app also stores a local copy of the data retrieved and it will try to use it
 
 **ToDo List**
 
-1) Add more users information (last seen online, etc)
+1) Add more users information (eg. online status) (DONE, BUT NEEDS TO BE REFACTORED)
 
-2) Store a local copy of the images
+2) Store a cached copy of the images (DONE)
 
 3) Search field to filter the list of users
 
