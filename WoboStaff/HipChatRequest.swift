@@ -13,16 +13,16 @@ class HipChatRequest {
     // MARK: - Private structs
     
     private struct HipChatConfig {
-        static let HipChatApiUrl = "https://api.hipchat.com/v2/user?expand=items&auth_token="
-        static let HipChatApiToken = ConfigFile.sharedInstance.hipChatToken
-        static let HipChatLocalJson = "WoboUsers.json"
+        static let hipChatApiUrl = "https://api.hipchat.com/v2/user?expand=items&auth_token="
+        static let hipChatApiToken = ConfigFile.sharedInstance.hipChatToken
+        static let hipChatLocalJson = "WoboUsers.json"
     }
     
     // MARK: - Private variables
     
-    private var woboFileName = HipChatConfig.HipChatLocalJson
+    private var woboFileName = HipChatConfig.hipChatLocalJson
     
-    private let request :NSURL? = NSURL(string: HipChatConfig.HipChatApiUrl + HipChatConfig.HipChatApiToken)
+    private let request :NSURL? = NSURL(string: HipChatConfig.hipChatApiUrl + HipChatConfig.hipChatApiToken)
     
     // MARK: - Public functions
     

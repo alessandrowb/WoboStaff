@@ -33,22 +33,22 @@ class WoboTableViewController: UITableViewController {
     
     private struct Constants
     {
-        static let WoboUsersCellIdentifiers = "WoboUserCell"
-        static let DateFormatToSort = "yyyy-MM-dd HH:mm:ss"
-        static let DateFormatToDisplay = "M/d/y EEE h:mm:ss a"
-        static let HeaderColor = UIColor(red: 0.4275, green: 0.6392, blue: 0.7765, alpha: 1.0)
-        static let HeaderHeight :CGFloat = 50
-        static let HeaderFontSize :CGFloat = 15
-        static let OddRowsColor = UIColor.lightGrayColor()
-        static let EvenRowsColor = UIColor.whiteColor()
-        static let AlertCriticalLevel = "Critical"
-        static let AlertNormalLevel = "Normal"
-        static let AlertTitle = "Can't load any data!"
-        static let AlertMessage = "Please check your internet connection and try again."
-        static let AlertButtonTitle = "Retry"
-        static let AlertNoConnectionTitle = "Network is not reachable"
-        static let AlertNoConnectionMessage = "Will try to load data from the cache"
-        static let AlertButtonNoConnectionTitle = "Continue"
+        static let woboUsersCellIdentifiers = "WoboUserCell"
+        static let dateFormatToSort = "yyyy-MM-dd HH:mm:ss"
+        static let dateFormatToDisplay = "M/d/y EEE h:mm:ss a"
+        static let headerColor = UIColor(red: 0.4275, green: 0.6392, blue: 0.7765, alpha: 1.0)
+        static let headerHeight :CGFloat = 50
+        static let headerFontSize :CGFloat = 15
+        static let oddRowsColor = UIColor.lightGrayColor()
+        static let evenRowsColor = UIColor.whiteColor()
+        static let alertCriticalLevel = "Critical"
+        static let alertNormalLevel = "Normal"
+        static let alertTitle = "Can't load any data!"
+        static let alertMessage = "Please check your internet connection and try again."
+        static let alertButtonTitle = "Retry"
+        static let alertNoConnectionTitle = "Network is not reachable"
+        static let alertNoConnectionMessage = "Will try to load data from the cache"
+        static let alertButtonNoConnectionTitle = "Continue"
     }
     
     // MARK: - Private variables
@@ -68,8 +68,8 @@ class WoboTableViewController: UITableViewController {
                 tableView.reloadData()
             }
             else {
-                let alertView = UIAlertController(title: Constants.AlertTitle, message: Constants.AlertMessage, preferredStyle: .Alert)
-                createAlert(alertView, buttonTitle: Constants.AlertButtonTitle, alertType: Constants.AlertCriticalLevel)
+                let alertView = UIAlertController(title: Constants.alertTitle, message: Constants.alertMessage, preferredStyle: .Alert)
+                createAlert(alertView, buttonTitle: Constants.alertButtonTitle, alertType: Constants.alertCriticalLevel)
             }
         }
     }
@@ -78,7 +78,7 @@ class WoboTableViewController: UITableViewController {
     
     private func createAlert (alertView :UIAlertController, buttonTitle :String, alertType :String)
     {
-        if alertType == Constants.AlertCriticalLevel {
+        if alertType == Constants.alertCriticalLevel {
             alertView.addAction(UIAlertAction(title: buttonTitle, style: .Default)
                 { action -> Void in
                     self.refresh()
@@ -98,7 +98,7 @@ class WoboTableViewController: UITableViewController {
         let myJson = jsonData
         let date = NSDate()
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = Constants.DateFormatToSort
+        dateFormatter.dateFormat = Constants.dateFormatToSort
         
         for (_,subJson):(String, JSON) in myJson["items"] {
             dateFormatter.timeZone = NSTimeZone(name: subJson["timezone"].string!)
@@ -179,8 +179,8 @@ class WoboTableViewController: UITableViewController {
             hipChatRequest.fetchAndSaveUsers()
         }
         else {
-            let alertView = UIAlertController(title: Constants.AlertNoConnectionTitle, message: Constants.AlertNoConnectionMessage, preferredStyle: .Alert)
-            createAlert(alertView, buttonTitle: Constants.AlertButtonNoConnectionTitle, alertType: Constants.AlertNormalLevel)
+            let alertView = UIAlertController(title: Constants.alertNoConnectionTitle, message: Constants.alertNoConnectionMessage, preferredStyle: .Alert)
+            createAlert(alertView, buttonTitle: Constants.alertButtonNoConnectionTitle, alertType: Constants.alertNormalLevel)
         }
         data = hipChatRequest.readUsersFromFile()
         sender?.endRefreshing()
@@ -216,12 +216,12 @@ class WoboTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.WoboUsersCellIdentifiers, forIndexPath: indexPath) as! WoboTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.woboUsersCellIdentifiers, forIndexPath: indexPath) as! WoboTableViewCell
         
         if indexPath.row % 2 == 0 {
-            cell.backgroundColor = Constants.OddRowsColor
+            cell.backgroundColor = Constants.oddRowsColor
         } else {
-            cell.backgroundColor = Constants.EvenRowsColor
+            cell.backgroundColor = Constants.evenRowsColor
         }
         
         cell.thisUser = activeWoboTimezones[indexPath.section].usersInThisTimezone[indexPath.row]
@@ -231,7 +231,7 @@ class WoboTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
-        return Constants.HeaderHeight
+        return Constants.headerHeight
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
@@ -239,15 +239,15 @@ class WoboTableViewController: UITableViewController {
         let title: UILabel = UILabel()
         
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = Constants.DateFormatToSort
+        dateFormatter.dateFormat = Constants.dateFormatToSort
         let thisTitle = dateFormatter.dateFromString(activeWoboTimezones[section].timezone)
-        dateFormatter.dateFormat = Constants.DateFormatToDisplay
+        dateFormatter.dateFormat = Constants.dateFormatToDisplay
         let thisFormattedTime = dateFormatter.stringFromDate(thisTitle!)
         
         title.text = "Local Time: " + thisFormattedTime
         title.textAlignment = NSTextAlignment.Center
-        title.backgroundColor = Constants.HeaderColor
-        title.font = UIFont.boldSystemFontOfSize(Constants.HeaderFontSize)
+        title.backgroundColor = Constants.headerColor
+        title.font = UIFont.boldSystemFontOfSize(Constants.headerFontSize)
         
         return title
     }
