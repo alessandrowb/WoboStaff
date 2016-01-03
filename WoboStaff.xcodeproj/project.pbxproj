@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D22461F01C373F730046B98A /* ConfigSample.plist in Resources */ = {isa = PBXBuildFile; fileRef = D22461EF1C373F730046B98A /* ConfigSample.plist */; };
 		D22461F21C373FD10046B98A /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = D22461F11C373FD10046B98A /* Config.plist */; };
+		D2951A5C1C38F56900B7A2F8 /* ImageLoadingWithCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2951A5B1C38F56900B7A2F8 /* ImageLoadingWithCache.swift */; };
 		D29780671C359D8500317032 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29780661C359D8500317032 /* AppDelegate.swift */; };
 		D29780711C359D8500317032 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D297806F1C359D8500317032 /* LaunchScreen.storyboard */; };
 		D29780791C359DCE00317032 /* HipChatRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29780781C359DCE00317032 /* HipChatRequest.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		D22461EF1C373F730046B98A /* ConfigSample.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ConfigSample.plist; sourceTree = "<group>"; };
 		D22461F11C373FD10046B98A /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		D2951A5B1C38F56900B7A2F8 /* ImageLoadingWithCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoadingWithCache.swift; sourceTree = "<group>"; };
 		D29780631C359D8500317032 /* WoboStaff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WoboStaff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D29780661C359D8500317032 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D297806D1C359D8500317032 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				D29780801C35E5B900317032 /* Main.storyboard */,
 				D29780861C36470800317032 /* WoboTableViewCell.swift */,
 				D29780841C35E7A900317032 /* WoboTableViewController.swift */,
+				D2951A5B1C38F56900B7A2F8 /* ImageLoadingWithCache.swift */,
 				D29780661C359D8500317032 /* AppDelegate.swift */,
 				D29780781C359DCE00317032 /* HipChatRequest.swift */,
 				D22461F11C373FD10046B98A /* Config.plist */,
@@ -162,6 +165,7 @@
 				D29780871C36470800317032 /* WoboTableViewCell.swift in Sources */,
 				D29780671C359D8500317032 /* AppDelegate.swift in Sources */,
 				D297807B1C35A70F00317032 /* SwiftyJSON.swift in Sources */,
+				D2951A5C1C38F56900B7A2F8 /* ImageLoadingWithCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -50,9 +50,11 @@ class WoboTableViewCell: UITableViewCell {
             setUserNameLabel(thisUser)
             setUserTitleLabel(thisUser)
             setUserOnlineStatus(thisUser)
-            setUserImageView(thisUser)
+            setCacheImage(thisUser)
         }
     }
+    
+    // MARK: - Wobo Cell Content
     
     private func setUserNameLabel (user :WoboUser)
     {
@@ -85,24 +87,9 @@ class WoboTableViewCell: UITableViewCell {
         userOnlineStatusLabel?.textColor = statusColor
     }
     
-    private func setUserImageView (user :WoboUser)
+    private func setCacheImage (user :WoboUser)
     {
-        let fileUrl = NSURL(string: user.imgUrl)
-        if let profileImageURL = fileUrl {
-            let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
-            dispatch_async(dispatch_get_global_queue(qos, 0)) { () -> Void in
-                if let imageData = NSData(contentsOfURL: profileImageURL) {
-                    dispatch_async(dispatch_get_main_queue()) {
-                        self.userImage?.image = UIImage(data: imageData)
-                    }
-                }
-                else {
-                    dispatch_async(dispatch_get_main_queue()) {
-                        self.userImage?.image = nil
-                    }
-                }
-            }
-        }
+        cache.getImage(user.imgUrl, imageView: userImage)
     }
 
 }

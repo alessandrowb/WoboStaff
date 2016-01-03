@@ -22,6 +22,7 @@ struct WoboUser
 
 class WoboTableViewController: UITableViewController {
     
+    
     // MARK: - Private structs
     
     private struct WoboTimeZone
@@ -42,11 +43,11 @@ class WoboTableViewController: UITableViewController {
         static let EvenRowsColor = UIColor.whiteColor()
         static let AlertCriticalLevel = "Critical"
         static let AlertNormalLevel = "Normal"
-        static let AlertTitle = "Can't load the data from the network!"
+        static let AlertTitle = "Can't load any data!"
         static let AlertMessage = "Please check your internet connection and try again."
         static let AlertButtonTitle = "Retry"
         static let AlertNoConnectionTitle = "Network is not reachable"
-        static let AlertNoConnectionMessage = "Will try to load data from the cache, images won't be downloaded"
+        static let AlertNoConnectionMessage = "Will try to load data from the cache"
         static let AlertButtonNoConnectionTitle = "Continue"
     }
     
@@ -91,9 +92,9 @@ class WoboTableViewController: UITableViewController {
     
     private func parseJson (jsonData :JSON)
     {
-        WoboUsers = []
-        uniqueTimes = []
-        activeWoboTimezones = []
+        WoboUsers.removeAll()
+        uniqueTimes.removeAll()
+        activeWoboTimezones.removeAll()
         let myJson = jsonData
         let date = NSDate()
         let dateFormatter = NSDateFormatter()
