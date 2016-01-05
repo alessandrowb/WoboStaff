@@ -25,7 +25,7 @@ The app also stores a local copy of the data retrieved and it will try to use it
 
 3) Store a cached copy of the images (DONE)
 
-4) Search field to filter the list of users
+4) Search field to filter the list of users (DONE)
 
 5) When clicking on a specific user, open a new screen with more details (maybe allow to send a message)
 
