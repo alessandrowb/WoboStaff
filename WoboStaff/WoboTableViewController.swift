@@ -226,7 +226,8 @@ class WoboTableViewController: UITableViewController, UITextFieldDelegate {
         refresh()
     }
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
