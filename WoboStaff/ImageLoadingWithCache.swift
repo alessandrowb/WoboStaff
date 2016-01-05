@@ -14,7 +14,7 @@ import UIKit
 var cache = ImageLoadingWithCache()
 var imageCache = [String:UIImage]()
 
-// MARK :- Caching system
+// MARK: - Caching system
 
 class ImageLoadingWithCache {
     

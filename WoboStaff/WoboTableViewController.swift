@@ -9,7 +9,7 @@
 import UIKit
 import SystemConfiguration
 
-class WoboTableViewController: UITableViewController {
+class WoboTableViewController: UITableViewController, UITextFieldDelegate {
     
     // MARK: - Private structs
     
@@ -31,12 +31,15 @@ class WoboTableViewController: UITableViewController {
         static let evenRowsColor = UIColor.whiteColor()
         static let alertCriticalLevel = "Critical"
         static let alertNormalLevel = "Normal"
-        static let alertTitle = "Can't load any data!"
-        static let alertMessage = "Please check your internet connection and try again."
-        static let alertButtonTitle = "Retry"
+        static let alertNoDataTitle = "Can't load any data!"
+        static let alertNoDataMessage = "Please check your internet connection and try again."
+        static let alertButtonNoDataTitle = "Retry"
         static let alertNoConnectionTitle = "Network is not reachable"
-        static let alertNoConnectionMessage = "Will try to load data from the cache"
+        static let alertNoConnectionMessage = "Will try to load data from the cache."
         static let alertButtonNoConnectionTitle = "Continue"
+        static let alertNoUsersTitle = "No users found!"
+        static let alertNoUsersMessage = "The current search does not match any result."
+        static let alertButtonNoUsersTitle = "Reload"
         static let defaultUserStatus = "Offline"
         static let noNetworkUserStatus = "Unknown (network not available)"
     }
@@ -47,32 +50,34 @@ class WoboTableViewController: UITableViewController {
     private var uniqueTimes: [String] = []
     private var activeWoboTimezones: [WoboTimeZone] = []
     private var networkIsAvailable = false
+    private var searchText: String?
+    private var data: JSON?
     
     private let hipChatRequest: HipChatRequest = HipChatRequest()
     
-    private var data: JSON?
+    // MARK: - Private functions
+    
+    private func reloadData (data: JSON?, filterText: String?)
     {
-        didSet {
-            if (data != nil) {
-                //if it exists, it is a parsable json
-                parseJson(data!)
-                tableView.reloadData()
-            }
-            else {
-                let alertView = UIAlertController(title: Constants.alertTitle, message: Constants.alertMessage, preferredStyle: .Alert)
-                createAlert(alertView, buttonTitle: Constants.alertButtonTitle, alertType: Constants.alertCriticalLevel)
-            }
+        if data != nil {
+            parseJson(data!, filterText: searchText)
+            tableView.reloadData()
+        }
+        else {
+            createAlert(Constants.alertNoDataTitle, alertMessage: Constants.alertNoDataMessage, alertStyle: .Alert, buttonTitle: Constants.alertButtonNoDataTitle, alertType: Constants.alertCriticalLevel)
         }
     }
     
-    // MARK: - Private functions
-    
-    private func createAlert (alertView: UIAlertController, buttonTitle: String, alertType: String)
+    private func createAlert (alertTitle: String, alertMessage: String, alertStyle: UIAlertControllerStyle, buttonTitle: String, alertType: String)
     {
+        let alertView = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: alertStyle)
         if alertType == Constants.alertCriticalLevel {
             alertView.addAction(UIAlertAction(title: buttonTitle, style: .Default)
                 { action -> Void in
-                    self.refresh()
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.refresh()
+                    })
+                    
                 })
         }
         else {
@@ -81,7 +86,7 @@ class WoboTableViewController: UITableViewController {
         presentViewController(alertView, animated: true, completion: nil)
     }
     
-    private func parseJson (jsonData: JSON)
+    private func parseJson (jsonData: JSON, filterText: String?)
     {
         WoboUsers.removeAll()
         uniqueTimes.removeAll()
@@ -92,38 +97,58 @@ class WoboTableViewController: UITableViewController {
         dateFormatter.dateFormat = Constants.dateFormatToSort
         
         for (_,subJson):(String, JSON) in myJson["items"] {
-            dateFormatter.timeZone = NSTimeZone(name: subJson["timezone"].string!)
-            let thisFormattedTime = dateFormatter.stringFromDate(date)
-            var thisUserStatus = Constants.defaultUserStatus
-            if networkIsAvailable {
-                if subJson["presence"]["show"] != nil {
-                    thisUserStatus = hipChatRequest.getUserStatus(subJson["presence"]["show"].string!)
+            if userPassesFilter(subJson["name"].string!, currentFilter: searchText) {
+                dateFormatter.timeZone = NSTimeZone(name: subJson["timezone"].string!)
+                let thisFormattedTime = dateFormatter.stringFromDate(date)
+                var thisUserStatus = Constants.defaultUserStatus
+                if networkIsAvailable {
+                    if subJson["presence"]["show"] != nil {
+                        thisUserStatus = hipChatRequest.getUserStatus(subJson["presence"]["show"].string!)
+                    }
+                }
+                else {
+                    thisUserStatus = Constants.noNetworkUserStatus
+                }
+                let thisUser = WoboUser()
+                thisUser.name = subJson["name"].string!
+                thisUser.title = subJson["title"].string!
+                thisUser.imgUrl = subJson["photo_url"].string!
+                thisUser.localFormattedTime = thisFormattedTime
+                thisUser.onlineStatus = thisUserStatus
+                WoboUsers.append(thisUser)
+                if !uniqueTimes.contains(thisFormattedTime) {
+                    uniqueTimes.append(thisFormattedTime)
                 }
             }
-            else {
-                thisUserStatus = Constants.noNetworkUserStatus
-            }
-            let thisUser = WoboUser()
-            thisUser.name = subJson["name"].string!
-            thisUser.title = subJson["title"].string!
-            thisUser.imgUrl = subJson["photo_url"].string!
-            thisUser.localFormattedTime = thisFormattedTime
-            thisUser.onlineStatus = thisUserStatus
-            WoboUsers.append(thisUser)
-            if !uniqueTimes.contains(thisFormattedTime) {
-                uniqueTimes.append(thisFormattedTime)
-            }
         }
         
-        uniqueTimes.sortInPlace({ $0 < $1 })
-        WoboUsers.sortInPlace({ $0.name < $1.name })
-        
-        for thisTime in uniqueTimes
-        {
-            let filteredWoboUsersArray = WoboUsers.filter{$0.localFormattedTime == thisTime}
-            let thisActiveWoboTimeZone = WoboTimeZone(timezone: thisTime, usersInThisTimezone: filteredWoboUsersArray)
-            activeWoboTimezones.append(thisActiveWoboTimeZone)
+        if uniqueTimes.isEmpty {
+            createAlert(Constants.alertNoUsersTitle, alertMessage: Constants.alertNoUsersMessage, alertStyle: .Alert, buttonTitle: Constants.alertButtonNoUsersTitle, alertType: Constants.alertCriticalLevel)
         }
+        else {
+            uniqueTimes.sortInPlace({ $0 < $1 })
+            WoboUsers.sortInPlace({ $0.name < $1.name })
+        
+            for thisTime in uniqueTimes
+            {
+                let filteredWoboUsersArray = WoboUsers.filter{$0.localFormattedTime == thisTime}
+                let thisActiveWoboTimeZone = WoboTimeZone(timezone: thisTime, usersInThisTimezone: filteredWoboUsersArray)
+                activeWoboTimezones.append(thisActiveWoboTimeZone)
+            }
+        }
+    }
+    
+    private func userPassesFilter (jsonUser: String, currentFilter: String?) -> Bool
+    {
+        if currentFilter == nil {
+            return true
+        }
+        else {
+            if currentFilter! == "" || jsonUser.lowercaseString.containsString(currentFilter!.lowercaseString) {
+                return true
+            }
+        }
+        return false
     }
     
     private func connectedToNetwork() -> Bool
@@ -156,19 +181,39 @@ class WoboTableViewController: UITableViewController {
         refresh(refreshControl)
     }
     
-    // MARK: - Outlets
+    // MARK: - Search text field
+    
+    @IBOutlet weak var searchTextField: UITextField!
+    {
+        didSet {
+            searchTextField.delegate = self
+        }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == searchTextField {
+            textField.resignFirstResponder()
+            searchText = textField.text
+            reloadData(data, filterText: searchText)
+        }
+        return true
+    }
+    
+    // MARK: - Refresh control
     
     @IBAction private func refresh(sender: UIRefreshControl?)
     {
+        searchTextField?.text = nil
+        searchText = nil
         networkIsAvailable = connectedToNetwork()
         if networkIsAvailable {
             hipChatRequest.fetchAndSaveUsers()
         }
         else {
-            let alertView = UIAlertController(title: Constants.alertNoConnectionTitle, message: Constants.alertNoConnectionMessage, preferredStyle: .Alert)
-            createAlert(alertView, buttonTitle: Constants.alertButtonNoConnectionTitle, alertType: Constants.alertNormalLevel)
+            createAlert(Constants.alertNoConnectionTitle, alertMessage: Constants.alertNoConnectionMessage, alertStyle: .Alert, buttonTitle: Constants.alertButtonNoConnectionTitle, alertType: Constants.alertNormalLevel)
         }
         data = hipChatRequest.readUsersFromFile()
+        reloadData(data, filterText: searchText)
         sender?.endRefreshing()
     }
     
@@ -181,13 +226,6 @@ class WoboTableViewController: UITableViewController {
         refresh()
     }
     
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
-        tableView.estimatedRowHeight = tableView.rowHeight
-        tableView.rowHeight = UITableViewAutomaticDimension
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int
