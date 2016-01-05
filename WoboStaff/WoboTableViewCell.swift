@@ -12,10 +12,10 @@ class WoboTableViewCell: UITableViewCell {
     
     // MARK: - Outlets
 
-    @IBOutlet weak var userNameLabel: UIBorderedLabel!
-    @IBOutlet weak var userTitleLabel: UIBorderedLabel!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var userTitleLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
-    @IBOutlet weak var userOnlineStatusLabel: UIBorderedLabel!
+    @IBOutlet weak var userOnlineStatusLabel: UILabel!
     
     // MARK: - Model
     
