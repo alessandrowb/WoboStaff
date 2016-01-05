@@ -20,7 +20,7 @@
 		D29780871C36470800317032 /* WoboTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29780861C36470800317032 /* WoboTableViewCell.swift */; };
 		D29F5F961C36F7A100F62E83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D297806D1C359D8500317032 /* Assets.xcassets */; };
 		D2C6CAB41C39B07900DC0369 /* HipChatConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C6CAB31C39B07900DC0369 /* HipChatConfigFile.swift */; };
-		D2FAF2511C371D100070AB07 /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D2FAF2501C371D100070AB07 /* LaunchImage.png */; };
+		D2FAF2511C371D100070AB07 /* LaunchImage1.2.png in Resources */ = {isa = PBXBuildFile; fileRef = D2FAF2501C371D100070AB07 /* LaunchImage1.2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +39,7 @@
 		D29780841C35E7A900317032 /* WoboTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WoboTableViewController.swift; sourceTree = "<group>"; };
 		D29780861C36470800317032 /* WoboTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WoboTableViewCell.swift; sourceTree = "<group>"; };
 		D2C6CAB31C39B07900DC0369 /* HipChatConfigFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HipChatConfigFile.swift; sourceTree = "<group>"; };
-		D2FAF2501C371D100070AB07 /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
+		D2FAF2501C371D100070AB07 /* LaunchImage1.2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage1.2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +75,7 @@
 				D22461F11C373FD10046B98A /* Config.plist */,
 				D22461EF1C373F730046B98A /* ConfigSample.plist */,
 				D29780721C359D8500317032 /* Info.plist */,
-				D2FAF2501C371D100070AB07 /* LaunchImage.png */,
+				D2FAF2501C371D100070AB07 /* LaunchImage1.2.png */,
 				D29780801C35E5B900317032 /* Main.storyboard */,
 				D29780661C359D8500317032 /* AppDelegate.swift */,
 				D29780781C359DCE00317032 /* HipChatRequest.swift */,
@@ -153,7 +153,7 @@
 				D29780811C35E5B900317032 /* Main.storyboard in Resources */,
 				D22461F01C373F730046B98A /* ConfigSample.plist in Resources */,
 				D29F5F961C36F7A100F62E83 /* Assets.xcassets in Resources */,
-				D2FAF2511C371D100070AB07 /* LaunchImage.png in Resources */,
+				D2FAF2511C371D100070AB07 /* LaunchImage1.2.png in Resources */,
 				D29780711C359D8500317032 /* LaunchScreen.storyboard in Resources */,
 				D22461F21C373FD10046B98A /* Config.plist in Resources */,
 			);
