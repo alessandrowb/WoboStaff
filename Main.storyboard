@@ -10,59 +10,57 @@
         <scene sceneID="sD9-sS-QgZ">
             <objects>
                 <tableViewController id="x4X-Sg-rlj" customClass="WoboTableViewController" customModule="WoboStaff" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="154" sectionHeaderHeight="28" sectionFooterHeight="28" id="WMO-2C-Xpw">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="87" sectionHeaderHeight="28" sectionFooterHeight="28" id="WMO-2C-Xpw">
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WoboUserCell" rowHeight="154" id="7Wx-Td-jt2" customClass="WoboTableViewCell" customModule="WoboStaff" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="154"/>
+                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WoboUserCell" rowHeight="87" id="7Wx-Td-jt2" customClass="WoboTableViewCell" customModule="WoboStaff" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="87"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Wx-Td-jt2" id="vg9-HI-JjJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="153"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="86"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZoB-Us-Vwh" customClass="UIBorderedLabel" customModule="WoboStaff" customModuleProvider="target">
-                                            <rect key="frame" x="88" y="30" width="504" height="61"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oqd-3x-WrF">
-                                            <rect key="frame" x="8" y="8" width="80" height="100"/>
+                                            <rect key="frame" x="8" y="8" width="65" height="65"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="100" id="4Oh-HU-2Qj"/>
-                                                <constraint firstAttribute="width" constant="80" id="lhX-Z9-IIs"/>
+                                                <constraint firstAttribute="width" constant="65" id="LQq-HN-GaL"/>
+                                                <constraint firstAttribute="height" constant="65" id="hqU-Ic-md8"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3n-gG-MtC" customClass="UIBorderedLabel" customModule="WoboStaff" customModuleProvider="target">
-                                            <rect key="frame" x="88" y="91" width="504" height="17"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3n-gG-MtC">
+                                            <rect key="frame" x="81" y="58" width="511" height="15"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFY-RU-OIM" customClass="UIBorderedLabel" customModule="WoboStaff" customModuleProvider="target">
-                                            <rect key="frame" x="88" y="8" width="504" height="22"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFY-RU-OIM">
+                                            <rect key="frame" x="81" y="8" width="511" height="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZoB-Us-Vwh">
+                                            <rect key="frame" x="81" y="33" width="511" height="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="a3n-gG-MtC" firstAttribute="top" secondItem="ZoB-Us-Vwh" secondAttribute="bottom" id="1q4-j2-Wom"/>
-                                        <constraint firstItem="JFY-RU-OIM" firstAttribute="top" secondItem="Oqd-3x-WrF" secondAttribute="top" id="A1a-tZ-zZr"/>
-                                        <constraint firstAttribute="leadingMargin" secondItem="Oqd-3x-WrF" secondAttribute="leading" id="Dz0-xw-7sc"/>
-                                        <constraint firstItem="ZoB-Us-Vwh" firstAttribute="width" secondItem="JFY-RU-OIM" secondAttribute="width" id="JgG-HS-R0p"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Oqd-3x-WrF" secondAttribute="bottom" id="TGd-YM-J0g"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="a3n-gG-MtC" secondAttribute="trailing" id="Y3U-73-a9C"/>
-                                        <constraint firstItem="a3n-gG-MtC" firstAttribute="leading" secondItem="ZoB-Us-Vwh" secondAttribute="leading" id="a0O-hJ-Bm5"/>
-                                        <constraint firstItem="ZoB-Us-Vwh" firstAttribute="top" secondItem="JFY-RU-OIM" secondAttribute="bottom" id="d83-yO-enS"/>
-                                        <constraint firstItem="ZoB-Us-Vwh" firstAttribute="leading" secondItem="Oqd-3x-WrF" secondAttribute="trailing" id="eIM-rc-IWB"/>
-                                        <constraint firstItem="JFY-RU-OIM" firstAttribute="leading" secondItem="Oqd-3x-WrF" secondAttribute="trailing" id="ig8-du-Kve"/>
-                                        <constraint firstAttribute="topMargin" secondItem="Oqd-3x-WrF" secondAttribute="top" id="jWe-av-Iax"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="a3n-gG-MtC" secondAttribute="bottom" id="mIZ-If-eJW"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="JFY-RU-OIM" secondAttribute="trailing" id="wzi-HY-RTN"/>
-                                        <constraint firstAttribute="topMargin" secondItem="JFY-RU-OIM" secondAttribute="top" id="yCf-Z6-NDs"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="a3n-gG-MtC" secondAttribute="trailing" id="5ld-1Z-jEu"/>
+                                        <constraint firstItem="JFY-RU-OIM" firstAttribute="leading" secondItem="Oqd-3x-WrF" secondAttribute="trailing" constant="8" symbolic="YES" id="5q7-cG-rJ5"/>
+                                        <constraint firstItem="a3n-gG-MtC" firstAttribute="bottom" secondItem="Oqd-3x-WrF" secondAttribute="bottom" id="HJ9-tj-lSG"/>
+                                        <constraint firstItem="JFY-RU-OIM" firstAttribute="top" secondItem="Oqd-3x-WrF" secondAttribute="top" id="HKx-i5-rBF"/>
+                                        <constraint firstItem="ZoB-Us-Vwh" firstAttribute="top" secondItem="JFY-RU-OIM" secondAttribute="bottom" constant="8" symbolic="YES" id="L9E-eZ-Ijh"/>
+                                        <constraint firstItem="ZoB-Us-Vwh" firstAttribute="leading" secondItem="JFY-RU-OIM" secondAttribute="leading" id="Ntz-WF-udO"/>
+                                        <constraint firstAttribute="topMargin" secondItem="Oqd-3x-WrF" secondAttribute="top" id="Rij-um-oMF"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="JFY-RU-OIM" secondAttribute="trailing" id="SNe-Kp-mKn"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ZoB-Us-Vwh" secondAttribute="trailing" id="aiw-LA-bva"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="Oqd-3x-WrF" secondAttribute="leading" id="gQO-1b-Lm0"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Oqd-3x-WrF" secondAttribute="bottom" priority="500" id="lCn-0F-iJL"/>
+                                        <constraint firstItem="a3n-gG-MtC" firstAttribute="leading" secondItem="JFY-RU-OIM" secondAttribute="leading" id="wOS-SH-uTG"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
