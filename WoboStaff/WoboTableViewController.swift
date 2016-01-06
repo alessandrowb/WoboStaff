@@ -29,6 +29,7 @@ class WoboTableViewController: UITableViewController, UITextFieldDelegate {
         static let headerFontSize: CGFloat = 15
         static let oddRowsColor = UIColor.lightGrayColor()
         static let evenRowsColor = UIColor.whiteColor()
+        static let searchPlaceHolder = "🔍 Search"
         static let alertCriticalLevel = "Critical"
         static let alertNormalLevel = "Normal"
         static let alertNoDataTitle = "Can't load any data!"
@@ -190,11 +191,28 @@ class WoboTableViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(textField: UITextField) -> Bool
+    {
         if textField == searchTextField {
             textField.resignFirstResponder()
             searchText = textField.text
             reloadData(data, filterText: searchText)
+        }
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool
+    {
+        if textField == searchTextField {
+            textField.placeholder = nil
+        }
+        return true
+    }
+    
+    func textFieldShouldClear(textField: UITextField) -> Bool
+    {
+        if textField == searchTextField {
+            textField.placeholder = Constants.searchPlaceHolder
         }
         return true
     }
