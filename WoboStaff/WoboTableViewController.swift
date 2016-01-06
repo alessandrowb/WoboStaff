@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SystemConfiguration
 
 class WoboTableViewController: UITableViewController, UITextFieldDelegate {
     
