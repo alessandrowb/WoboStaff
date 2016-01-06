@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D22461F01C373F730046B98A /* ConfigSample.plist in Resources */ = {isa = PBXBuildFile; fileRef = D22461EF1C373F730046B98A /* ConfigSample.plist */; };
 		D22461F21C373FD10046B98A /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = D22461F11C373FD10046B98A /* Config.plist */; };
+		D24E9BB31C3D66E900F3265C /* NetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24E9BB21C3D66E900F3265C /* NetworkStatus.swift */; };
 		D28B62EB1C3989D400E03F23 /* WoboUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28B62EA1C3989D400E03F23 /* WoboUser.swift */; };
 		D2951A5C1C38F56900B7A2F8 /* ImageLoadingWithCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2951A5B1C38F56900B7A2F8 /* ImageLoadingWithCache.swift */; };
 		D29780671C359D8500317032 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29780661C359D8500317032 /* AppDelegate.swift */; };
@@ -20,12 +21,13 @@
 		D29780871C36470800317032 /* WoboTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29780861C36470800317032 /* WoboTableViewCell.swift */; };
 		D29F5F961C36F7A100F62E83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D297806D1C359D8500317032 /* Assets.xcassets */; };
 		D2C6CAB41C39B07900DC0369 /* HipChatConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C6CAB31C39B07900DC0369 /* HipChatConfigFile.swift */; };
-		D2FAF2511C371D100070AB07 /* LaunchImage1.2.png in Resources */ = {isa = PBXBuildFile; fileRef = D2FAF2501C371D100070AB07 /* LaunchImage1.2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D22461EF1C373F730046B98A /* ConfigSample.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ConfigSample.plist; sourceTree = "<group>"; };
 		D22461F11C373FD10046B98A /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		D24E9BB21C3D66E900F3265C /* NetworkStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkStatus.swift; sourceTree = "<group>"; };
+		D24E9BB61C3D68B100F3265C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		D28B62EA1C3989D400E03F23 /* WoboUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WoboUser.swift; sourceTree = "<group>"; };
 		D2951A5B1C38F56900B7A2F8 /* ImageLoadingWithCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoadingWithCache.swift; sourceTree = "<group>"; };
 		D29780631C359D8500317032 /* WoboStaff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WoboStaff.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,7 +41,6 @@
 		D29780841C35E7A900317032 /* WoboTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WoboTableViewController.swift; sourceTree = "<group>"; };
 		D29780861C36470800317032 /* WoboTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WoboTableViewCell.swift; sourceTree = "<group>"; };
 		D2C6CAB31C39B07900DC0369 /* HipChatConfigFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HipChatConfigFile.swift; sourceTree = "<group>"; };
-		D2FAF2501C371D100070AB07 /* LaunchImage1.2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage1.2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,10 +73,10 @@
 		D29780651C359D8500317032 /* WoboStaff */ = {
 			isa = PBXGroup;
 			children = (
+				D24E9BB61C3D68B100F3265C /* README.md */,
 				D22461F11C373FD10046B98A /* Config.plist */,
 				D22461EF1C373F730046B98A /* ConfigSample.plist */,
 				D29780721C359D8500317032 /* Info.plist */,
-				D2FAF2501C371D100070AB07 /* LaunchImage1.2.png */,
 				D29780801C35E5B900317032 /* Main.storyboard */,
 				D29780661C359D8500317032 /* AppDelegate.swift */,
 				D29780781C359DCE00317032 /* HipChatRequest.swift */,
@@ -84,6 +85,7 @@
 				D297807A1C35A70F00317032 /* SwiftyJSON.swift */,
 				D29780861C36470800317032 /* WoboTableViewCell.swift */,
 				D29780841C35E7A900317032 /* WoboTableViewController.swift */,
+				D24E9BB21C3D66E900F3265C /* NetworkStatus.swift */,
 				D28B62EA1C3989D400E03F23 /* WoboUser.swift */,
 				D297806D1C359D8500317032 /* Assets.xcassets */,
 				D297806F1C359D8500317032 /* LaunchScreen.storyboard */,
@@ -153,7 +155,6 @@
 				D29780811C35E5B900317032 /* Main.storyboard in Resources */,
 				D22461F01C373F730046B98A /* ConfigSample.plist in Resources */,
 				D29F5F961C36F7A100F62E83 /* Assets.xcassets in Resources */,
-				D2FAF2511C371D100070AB07 /* LaunchImage1.2.png in Resources */,
 				D29780711C359D8500317032 /* LaunchScreen.storyboard in Resources */,
 				D22461F21C373FD10046B98A /* Config.plist in Resources */,
 			);
@@ -167,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D29780791C359DCE00317032 /* HipChatRequest.swift in Sources */,
+				D24E9BB31C3D66E900F3265C /* NetworkStatus.swift in Sources */,
 				D29780851C35E7A900317032 /* WoboTableViewController.swift in Sources */,
 				D29780871C36470800317032 /* WoboTableViewCell.swift in Sources */,
 				D29780671C359D8500317032 /* AppDelegate.swift in Sources */,
