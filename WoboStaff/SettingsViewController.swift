@@ -14,12 +14,12 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var currentTokenLabel: UILabel!
     
-    @IBAction func saveButton(sender: UIButton)
+    @IBAction func saveButton(sender: UISettingButton)
     {
         setNewApiToken()
     }
     
-    @IBAction func copyButton(sender: UIButton)
+    @IBAction func copyButton(sender: UISettingButton)
     {
         UIPasteboard.generalPasteboard().string = currentTokenLabel?.text
     }
