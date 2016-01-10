@@ -183,7 +183,7 @@ class WoboTableViewController: UITableViewController, UITextFieldDelegate {
         refresh(refreshControl)
     }
     
-    // MARK: - Search text field
+    // MARK: - Textfields customization
     
     @IBOutlet weak var searchTextField: UITextField!
     {

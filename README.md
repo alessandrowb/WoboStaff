@@ -27,4 +27,4 @@ The app also stores a local copy of the data retrieved and it will try to use it
 
 6) Add settings panel to add/update the HipChat API token from the app (DONE)
 
-7) Improve the UI for the settings panel
+7) Improve the the settings panel UI
