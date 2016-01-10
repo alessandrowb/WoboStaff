@@ -173,20 +173,12 @@
                             <constraint firstAttribute="trailingMargin" secondItem="zXH-cW-gSB" secondAttribute="trailing" id="311-wl-uqy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Wid-AY-yIG" secondAttribute="trailing" id="4Ni-wA-mke"/>
                             <constraint firstItem="zXH-cW-gSB" firstAttribute="top" secondItem="Wid-AY-yIG" secondAttribute="bottom" constant="8" symbolic="YES" id="GsS-DI-PE7"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="G4T-ul-RGD" secondAttribute="trailing" id="HLY-DB-vCY"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="G4T-ul-RGD" secondAttribute="leading" id="K2t-Dd-7WB"/>
                             <constraint firstItem="hjC-1D-4SB" firstAttribute="top" secondItem="SUL-hq-zzL" secondAttribute="bottom" constant="8" symbolic="YES" id="P4K-0d-p8u"/>
                             <constraint firstItem="C7Y-1i-5vO" firstAttribute="top" secondItem="zXH-cW-gSB" secondAttribute="bottom" constant="8" symbolic="YES" id="QKV-Kw-Gkv"/>
                             <constraint firstAttribute="leadingMargin" secondItem="hjC-1D-4SB" secondAttribute="leading" id="Sce-YY-buz"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="G4T-ul-RGD" secondAttribute="trailing" id="VrL-g5-zhw"/>
-                            <constraint firstItem="oMv-wO-WKK" firstAttribute="leading" secondItem="G4T-ul-RGD" secondAttribute="trailing" constant="8" symbolic="YES" id="Wdr-uL-9LZ"/>
-                            <constraint firstItem="oMv-wO-WKK" firstAttribute="baseline" secondItem="G4T-ul-RGD" secondAttribute="baseline" id="XSP-fm-zrS"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Wid-AY-yIG" secondAttribute="leading" id="YuU-Ov-ixT"/>
                             <constraint firstItem="oMv-wO-WKK" firstAttribute="leading" secondItem="G4T-ul-RGD" secondAttribute="trailing" constant="8" symbolic="YES" id="aOW-Yz-nqO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="oMv-wO-WKK" secondAttribute="trailing" id="bB3-Ng-20K"/>
                             <constraint firstAttribute="leadingMargin" secondItem="SUL-hq-zzL" secondAttribute="leading" id="c4j-JW-YYi"/>
-                            <constraint firstItem="G4T-ul-RGD" firstAttribute="top" secondItem="hjC-1D-4SB" secondAttribute="bottom" constant="8" symbolic="YES" id="deg-Te-1bb"/>
-                            <constraint firstItem="Wid-AY-yIG" firstAttribute="top" secondItem="G4T-ul-RGD" secondAttribute="bottom" constant="8" symbolic="YES" id="dhS-gk-NNA"/>
                             <constraint firstItem="oMv-wO-WKK" firstAttribute="baseline" secondItem="G4T-ul-RGD" secondAttribute="baseline" id="fZt-mo-8m4"/>
                             <constraint firstItem="G4T-ul-RGD" firstAttribute="top" secondItem="hjC-1D-4SB" secondAttribute="bottom" constant="8" symbolic="YES" id="hpc-Bj-rmI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oMv-wO-WKK" secondAttribute="trailing" id="kI3-ya-qrL"/>
@@ -195,23 +187,9 @@
                             <constraint firstItem="SUL-hq-zzL" firstAttribute="top" secondItem="8N0-tH-rVF" secondAttribute="bottom" constant="8" symbolic="YES" id="rUO-DT-0Lk"/>
                             <constraint firstItem="Wid-AY-yIG" firstAttribute="top" secondItem="G4T-ul-RGD" secondAttribute="bottom" constant="8" symbolic="YES" id="ryM-Io-B4A"/>
                             <constraint firstItem="C7Y-1i-5vO" firstAttribute="centerX" secondItem="zXH-cW-gSB" secondAttribute="centerX" id="sOu-a9-tJg"/>
-                            <constraint firstItem="oMv-wO-WKK" firstAttribute="baseline" secondItem="G4T-ul-RGD" secondAttribute="baseline" id="yJx-wV-nRl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SUL-hq-zzL" secondAttribute="trailing" id="z2z-54-TGj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hjC-1D-4SB" secondAttribute="trailing" id="zaI-Xv-FrN"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="HLY-DB-vCY"/>
-                                <exclude reference="K2t-Dd-7WB"/>
-                                <exclude reference="VrL-g5-zhw"/>
-                                <exclude reference="deg-Te-1bb"/>
-                                <exclude reference="dhS-gk-NNA"/>
-                                <exclude reference="Wdr-uL-9LZ"/>
-                                <exclude reference="XSP-fm-zrS"/>
-                                <exclude reference="bB3-Ng-20K"/>
-                                <exclude reference="yJx-wV-nRl"/>
-                            </mask>
-                        </variation>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
