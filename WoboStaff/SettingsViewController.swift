@@ -60,7 +60,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidBeginEditing(textField: UITextField)
     {
         if textField == newTokenTextField {
-            adjustCreateKeyboard(textField)
+            adjustShowKeyboard(textField)
         }
     }
     
@@ -96,7 +96,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    private func adjustCreateKeyboard(textField: UITextField)
+    private func adjustShowKeyboard(textField: UITextField)
     {
         let textFieldRect: CGRect = self.view.window!.convertRect(textField.bounds, fromView: textField)
         let viewRect: CGRect = self.view.window!.convertRect(self.view.bounds, fromView: self.view)
