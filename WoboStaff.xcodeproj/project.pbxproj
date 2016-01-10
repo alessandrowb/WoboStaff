@@ -10,6 +10,8 @@
 		D22D313D1C41840B00A8A3F0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D313C1C41840B00A8A3F0 /* SettingsViewController.swift */; };
 		D22D31411C41A3B600A8A3F0 /* HipChatConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D31401C41A3B600A8A3F0 /* HipChatConfig.swift */; };
 		D24E9BB31C3D66E900F3265C /* NetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24E9BB21C3D66E900F3265C /* NetworkStatus.swift */; };
+		D255DF0D1C4302970075A29E /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D255DF0C1C4302970075A29E /* StringExtensions.swift */; };
+		D255DF131C4303650075A29E /* UISettingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D255DF121C4303650075A29E /* UISettingButton.swift */; };
 		D28B62EB1C3989D400E03F23 /* WoboUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28B62EA1C3989D400E03F23 /* WoboUser.swift */; };
 		D2951A5C1C38F56900B7A2F8 /* ImageLoadingWithCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2951A5B1C38F56900B7A2F8 /* ImageLoadingWithCache.swift */; };
 		D29780671C359D8500317032 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29780661C359D8500317032 /* AppDelegate.swift */; };
@@ -27,6 +29,8 @@
 		D22D31401C41A3B600A8A3F0 /* HipChatConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HipChatConfig.swift; sourceTree = "<group>"; };
 		D24E9BB21C3D66E900F3265C /* NetworkStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkStatus.swift; sourceTree = "<group>"; };
 		D24E9BB61C3D68B100F3265C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		D255DF0C1C4302970075A29E /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		D255DF121C4303650075A29E /* UISettingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISettingButton.swift; sourceTree = "<group>"; };
 		D28B62EA1C3989D400E03F23 /* WoboUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WoboUser.swift; sourceTree = "<group>"; };
 		D2951A5B1C38F56900B7A2F8 /* ImageLoadingWithCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoadingWithCache.swift; sourceTree = "<group>"; };
 		D29780631C359D8500317032 /* WoboStaff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WoboStaff.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,7 +84,9 @@
 				D2951A5B1C38F56900B7A2F8 /* ImageLoadingWithCache.swift */,
 				D24E9BB21C3D66E900F3265C /* NetworkStatus.swift */,
 				D22D313C1C41840B00A8A3F0 /* SettingsViewController.swift */,
+				D255DF0C1C4302970075A29E /* StringExtensions.swift */,
 				D297807A1C35A70F00317032 /* SwiftyJSON.swift */,
+				D255DF121C4303650075A29E /* UISettingButton.swift */,
 				D29780861C36470800317032 /* WoboTableViewCell.swift */,
 				D29780841C35E7A900317032 /* WoboTableViewController.swift */,
 				D28B62EA1C3989D400E03F23 /* WoboUser.swift */,
@@ -166,8 +172,10 @@
 				D24E9BB31C3D66E900F3265C /* NetworkStatus.swift in Sources */,
 				D29780851C35E7A900317032 /* WoboTableViewController.swift in Sources */,
 				D22D313D1C41840B00A8A3F0 /* SettingsViewController.swift in Sources */,
+				D255DF131C4303650075A29E /* UISettingButton.swift in Sources */,
 				D29780871C36470800317032 /* WoboTableViewCell.swift in Sources */,
 				D29780671C359D8500317032 /* AppDelegate.swift in Sources */,
+				D255DF0D1C4302970075A29E /* StringExtensions.swift in Sources */,
 				D297807B1C35A70F00317032 /* SwiftyJSON.swift in Sources */,
 				D22D31411C41A3B600A8A3F0 /* HipChatConfig.swift in Sources */,
 				D28B62EB1C3989D400E03F23 /* WoboUser.swift in Sources */,
