@@ -12,30 +12,35 @@ class HipChatRequest {
     
     // MARK: - Private structs
     
-    private struct HipChatConfig
+    private struct Constants
     {
         static let hipChatApiUrl = "https://api.hipchat.com/v2/user?expand=items&auth_token="
-        static let hipChatApiToken = HipChatConfigFile.sharedInstance.hipChatToken
         static let hipChatLocalJson = "WoboUsers.json"
         static let hipChatUnknownUserStatus = "Unknown"
     }
     
     // MARK: - Private variables
     
-    private var woboFileName = HipChatConfig.hipChatLocalJson
-    private let request: NSURL? = NSURL(string: HipChatConfig.hipChatApiUrl + HipChatConfig.hipChatApiToken)
+    private var woboFileName = Constants.hipChatLocalJson
     private var hipChatUserStatusesMap: [String: String] = ["away": "Idle", "chat": "Online", "dnd": "Busy", "xa": "Mobile"]
+    
+    private var request: NSURL
+    {
+        get {
+           return NSURL(string: Constants.hipChatApiUrl + hipChatConfig.currentToken)!
+        }
+    }
     
     // MARK: - Public functions
     
     func returnUrl() -> String
     {
-        return request!.absoluteString
+        return request.absoluteString
     }
     
     func fetchAndReturnUsers() -> JSON?
     {
-        if let data = NSData(contentsOfURL: request!) {
+        if let data = NSData(contentsOfURL: request) {
             do {
                 try NSJSONSerialization.JSONObjectWithData(data, options: []) as! NSDictionary
                 let json = JSON(data: data)
@@ -53,7 +58,7 @@ class HipChatRequest {
     
     func fetchAndSaveUsers()
     {
-        if let data = NSData(contentsOfURL: request!) {
+        if let data = NSData(contentsOfURL: request) {
             do {
                 try NSJSONSerialization.JSONObjectWithData(data, options: []) as! NSDictionary
                 let json = JSON(data: data)
@@ -94,7 +99,7 @@ class HipChatRequest {
             return thisStatus
         }
         else {
-            return HipChatConfig.hipChatUnknownUserStatus
+            return Constants.hipChatUnknownUserStatus
         }
     }
     

@@ -1,9 +1,5 @@
 # WoboStaff
 
-**Installation**
-
-Rename ConfigSample.plist to Config.plist and add a valid HipChat API Token.
-
 **Summary**
 
 Do you wonder what time is it where your co-workers live?
@@ -27,6 +23,8 @@ The app also stores a local copy of the data retrieved and it will try to use it
 
 4) Search field to filter the list of users (DONE)
 
-5) When clicking on a specific user, open a new screen with more details (maybe allow to send a message)
+5) When clicking on a specific user, open a new screen with more details
 
-6) Add a setting tab to add/update the API token from the app (at that point, this could be reworked into a generic HipChat app)
+6) Add settings panel to add/update the HipChat API token from the app (DONE)
+
+7) Improve the UI for the settings panel

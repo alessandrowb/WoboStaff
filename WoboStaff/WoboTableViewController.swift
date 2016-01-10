@@ -29,6 +29,13 @@ class WoboTableViewController: UITableViewController, UITextFieldDelegate {
         static let oddRowsColor = UIColor.lightGrayColor()
         static let evenRowsColor = UIColor.whiteColor()
         static let searchPlaceHolder = "🔍 Search"
+        static let defaultUserStatus = "Offline"
+        static let noNetworkUserStatus = "Unknown (network not available)"
+        static let segueToSettings = "showSettings"
+    }
+    
+    private struct Alerts
+    {
         static let alertCriticalLevel = "Critical"
         static let alertNormalLevel = "Normal"
         static let alertNoDataTitle = "Can't load any data!"
@@ -40,8 +47,9 @@ class WoboTableViewController: UITableViewController, UITextFieldDelegate {
         static let alertNoUsersTitle = "No users found!"
         static let alertNoUsersMessage = "The current search does not match any result."
         static let alertButtonNoUsersTitle = "Reload"
-        static let defaultUserStatus = "Offline"
-        static let noNetworkUserStatus = "Unknown (network not available)"
+        static let alertApiErrorTitle = "Api Error!"
+        static let alertApiErrorMessage = "Please set a valid HipChat API token and try again."
+        static let alertButtonApiErrorTitle = "Go To Settings"
     }
     
     // MARK: - Private variables
@@ -60,22 +68,28 @@ class WoboTableViewController: UITableViewController, UITextFieldDelegate {
     private func reloadData (data: JSON?, filterText: String?)
     {
         if data != nil {
+            // if it is not nil, then it is a parsable json
             parseJson(data!, filterText: searchText)
             tableView.reloadData()
         }
         else {
-            createAlert(Constants.alertNoDataTitle, alertMessage: Constants.alertNoDataMessage, alertStyle: .Alert, buttonTitle: Constants.alertButtonNoDataTitle, alertType: Constants.alertCriticalLevel)
+            createAlert(Alerts.alertNoDataTitle, alertMessage: Alerts.alertNoDataMessage, alertStyle: .Alert, buttonTitle: Alerts.alertButtonNoDataTitle, alertType: Alerts.alertCriticalLevel)
         }
     }
     
     private func createAlert (alertTitle: String, alertMessage: String, alertStyle: UIAlertControllerStyle, buttonTitle: String, alertType: String)
     {
         let alertView = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: alertStyle)
-        if alertType == Constants.alertCriticalLevel {
+        if alertType == Alerts.alertCriticalLevel {
             alertView.addAction(UIAlertAction(title: buttonTitle, style: .Default)
                 { action -> Void in
                     dispatch_async(dispatch_get_main_queue(), {
-                        self.refresh()
+                        if alertMessage == Alerts.alertApiErrorMessage {
+                            self.goToSettings()
+                        }
+                        else {
+                            self.refresh()
+                        }
                     })
                     
                 })
@@ -96,45 +110,50 @@ class WoboTableViewController: UITableViewController, UITextFieldDelegate {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = Constants.dateFormatToSort
         
-        for (_,subJson):(String, JSON) in myJson["items"] {
-            if userPassesFilter(subJson["name"].string!, currentFilter: searchText) {
-                dateFormatter.timeZone = NSTimeZone(name: subJson["timezone"].string!)
-                let thisFormattedTime = dateFormatter.stringFromDate(date)
-                var thisUserStatus = Constants.defaultUserStatus
-                if networkIsAvailable {
-                    if subJson["presence"]["show"] != nil {
-                        thisUserStatus = hipChatRequest.getUserStatus(subJson["presence"]["show"].string!)
+        if !myJson["items"].isEmpty {
+            for (_,subJson):(String, JSON) in myJson["items"] {
+                if userPassesFilter(subJson["name"].string!, currentFilter: searchText) {
+                    dateFormatter.timeZone = NSTimeZone(name: subJson["timezone"].string!)
+                    let thisFormattedTime = dateFormatter.stringFromDate(date)
+                    var thisUserStatus = Constants.defaultUserStatus
+                    if networkIsAvailable {
+                        if subJson["presence"]["show"] != nil {
+                            thisUserStatus = hipChatRequest.getUserStatus(subJson["presence"]["show"].string!)
+                        }
+                    }
+                    else {
+                        thisUserStatus = Constants.noNetworkUserStatus
+                    }
+                    let thisUser = WoboUser()
+                    thisUser.name = subJson["name"].string!
+                    thisUser.title = subJson["title"].string!
+                    thisUser.imgUrl = subJson["photo_url"].string!
+                    thisUser.localFormattedTime = thisFormattedTime
+                    thisUser.onlineStatus = thisUserStatus
+                    WoboUsers.append(thisUser)
+                    if !uniqueTimes.contains(thisFormattedTime) {
+                        uniqueTimes.append(thisFormattedTime)
                     }
                 }
-                else {
-                    thisUserStatus = Constants.noNetworkUserStatus
-                }
-                let thisUser = WoboUser()
-                thisUser.name = subJson["name"].string!
-                thisUser.title = subJson["title"].string!
-                thisUser.imgUrl = subJson["photo_url"].string!
-                thisUser.localFormattedTime = thisFormattedTime
-                thisUser.onlineStatus = thisUserStatus
-                WoboUsers.append(thisUser)
-                if !uniqueTimes.contains(thisFormattedTime) {
-                    uniqueTimes.append(thisFormattedTime)
+            }
+            
+            if uniqueTimes.isEmpty {
+                createAlert(Alerts.alertNoUsersTitle, alertMessage: Alerts.alertNoUsersMessage, alertStyle: .Alert, buttonTitle: Alerts.alertButtonNoUsersTitle, alertType: Alerts.alertCriticalLevel)
+            }
+            else {
+                uniqueTimes.sortInPlace({ $0 < $1 })
+                WoboUsers.sortInPlace({ $0.name < $1.name })
+                
+                for thisTime in uniqueTimes
+                {
+                    let filteredWoboUsersArray = WoboUsers.filter{$0.localFormattedTime == thisTime}
+                    let thisActiveWoboTimeZone = WoboTimeZone(timezone: thisTime, usersInThisTimezone: filteredWoboUsersArray)
+                    activeWoboTimezones.append(thisActiveWoboTimeZone)
                 }
             }
-        }
-        
-        if uniqueTimes.isEmpty {
-            createAlert(Constants.alertNoUsersTitle, alertMessage: Constants.alertNoUsersMessage, alertStyle: .Alert, buttonTitle: Constants.alertButtonNoUsersTitle, alertType: Constants.alertCriticalLevel)
         }
         else {
-            uniqueTimes.sortInPlace({ $0 < $1 })
-            WoboUsers.sortInPlace({ $0.name < $1.name })
-        
-            for thisTime in uniqueTimes
-            {
-                let filteredWoboUsersArray = WoboUsers.filter{$0.localFormattedTime == thisTime}
-                let thisActiveWoboTimeZone = WoboTimeZone(timezone: thisTime, usersInThisTimezone: filteredWoboUsersArray)
-                activeWoboTimezones.append(thisActiveWoboTimeZone)
-            }
+            createAlert(Alerts.alertApiErrorTitle, alertMessage: Alerts.alertApiErrorMessage, alertStyle: .Alert, buttonTitle: Alerts.alertButtonApiErrorTitle, alertType: Alerts.alertCriticalLevel)
         }
     }
     
@@ -149,6 +168,11 @@ class WoboTableViewController: UITableViewController, UITextFieldDelegate {
             }
         }
         return false
+    }
+    
+    private func goToSettings()
+    {
+        performSegueWithIdentifier(Constants.segueToSettings, sender: nil)
     }
     
     private func refresh()
@@ -198,7 +222,7 @@ class WoboTableViewController: UITableViewController, UITextFieldDelegate {
             hipChatRequest.fetchAndSaveUsers()
         }
         else {
-            createAlert(Constants.alertNoConnectionTitle, alertMessage: Constants.alertNoConnectionMessage, alertStyle: .Alert, buttonTitle: Constants.alertButtonNoConnectionTitle, alertType: Constants.alertNormalLevel)
+            createAlert(Alerts.alertNoConnectionTitle, alertMessage: Alerts.alertNoConnectionMessage, alertStyle: .Alert, buttonTitle: Alerts.alertButtonNoConnectionTitle, alertType: Alerts.alertNormalLevel)
         }
         data = hipChatRequest.readUsersFromFile()
         reloadData(data, filterText: searchText)
@@ -211,7 +235,13 @@ class WoboTableViewController: UITableViewController, UITextFieldDelegate {
     {
         super.viewDidAppear(animated)
         self.navigationItem.title = "Wobo Staff"
-        refresh()
+        if hipChatConfig.currentToken == "" {
+            //First time the user is running the app
+            goToSettings()
+        }
+        else {
+            refresh()
+        }
     }
     
     override func viewDidLoad()

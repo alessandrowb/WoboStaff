@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D22461F01C373F730046B98A /* ConfigSample.plist in Resources */ = {isa = PBXBuildFile; fileRef = D22461EF1C373F730046B98A /* ConfigSample.plist */; };
-		D22461F21C373FD10046B98A /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = D22461F11C373FD10046B98A /* Config.plist */; };
+		D22D313D1C41840B00A8A3F0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D313C1C41840B00A8A3F0 /* SettingsViewController.swift */; };
+		D22D31411C41A3B600A8A3F0 /* HipChatConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D31401C41A3B600A8A3F0 /* HipChatConfig.swift */; };
 		D24E9BB31C3D66E900F3265C /* NetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24E9BB21C3D66E900F3265C /* NetworkStatus.swift */; };
 		D28B62EB1C3989D400E03F23 /* WoboUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28B62EA1C3989D400E03F23 /* WoboUser.swift */; };
 		D2951A5C1C38F56900B7A2F8 /* ImageLoadingWithCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2951A5B1C38F56900B7A2F8 /* ImageLoadingWithCache.swift */; };
@@ -20,12 +20,11 @@
 		D29780851C35E7A900317032 /* WoboTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29780841C35E7A900317032 /* WoboTableViewController.swift */; };
 		D29780871C36470800317032 /* WoboTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29780861C36470800317032 /* WoboTableViewCell.swift */; };
 		D29F5F961C36F7A100F62E83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D297806D1C359D8500317032 /* Assets.xcassets */; };
-		D2C6CAB41C39B07900DC0369 /* HipChatConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C6CAB31C39B07900DC0369 /* HipChatConfigFile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D22461EF1C373F730046B98A /* ConfigSample.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ConfigSample.plist; sourceTree = "<group>"; };
-		D22461F11C373FD10046B98A /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		D22D313C1C41840B00A8A3F0 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D22D31401C41A3B600A8A3F0 /* HipChatConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HipChatConfig.swift; sourceTree = "<group>"; };
 		D24E9BB21C3D66E900F3265C /* NetworkStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkStatus.swift; sourceTree = "<group>"; };
 		D24E9BB61C3D68B100F3265C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		D28B62EA1C3989D400E03F23 /* WoboUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WoboUser.swift; sourceTree = "<group>"; };
@@ -40,7 +39,6 @@
 		D29780801C35E5B900317032 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
 		D29780841C35E7A900317032 /* WoboTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WoboTableViewController.swift; sourceTree = "<group>"; };
 		D29780861C36470800317032 /* WoboTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WoboTableViewCell.swift; sourceTree = "<group>"; };
-		D2C6CAB31C39B07900DC0369 /* HipChatConfigFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HipChatConfigFile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,13 +72,12 @@
 			isa = PBXGroup;
 			children = (
 				D24E9BB61C3D68B100F3265C /* README.md */,
-				D22461F11C373FD10046B98A /* Config.plist */,
-				D22461EF1C373F730046B98A /* ConfigSample.plist */,
 				D29780721C359D8500317032 /* Info.plist */,
 				D29780801C35E5B900317032 /* Main.storyboard */,
+				D22D313C1C41840B00A8A3F0 /* SettingsViewController.swift */,
 				D29780661C359D8500317032 /* AppDelegate.swift */,
 				D29780781C359DCE00317032 /* HipChatRequest.swift */,
-				D2C6CAB31C39B07900DC0369 /* HipChatConfigFile.swift */,
+				D22D31401C41A3B600A8A3F0 /* HipChatConfig.swift */,
 				D2951A5B1C38F56900B7A2F8 /* ImageLoadingWithCache.swift */,
 				D297807A1C35A70F00317032 /* SwiftyJSON.swift */,
 				D29780861C36470800317032 /* WoboTableViewCell.swift */,
@@ -153,10 +150,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D29780811C35E5B900317032 /* Main.storyboard in Resources */,
-				D22461F01C373F730046B98A /* ConfigSample.plist in Resources */,
 				D29F5F961C36F7A100F62E83 /* Assets.xcassets in Resources */,
 				D29780711C359D8500317032 /* LaunchScreen.storyboard in Resources */,
-				D22461F21C373FD10046B98A /* Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,10 +165,11 @@
 				D29780791C359DCE00317032 /* HipChatRequest.swift in Sources */,
 				D24E9BB31C3D66E900F3265C /* NetworkStatus.swift in Sources */,
 				D29780851C35E7A900317032 /* WoboTableViewController.swift in Sources */,
+				D22D313D1C41840B00A8A3F0 /* SettingsViewController.swift in Sources */,
 				D29780871C36470800317032 /* WoboTableViewCell.swift in Sources */,
 				D29780671C359D8500317032 /* AppDelegate.swift in Sources */,
 				D297807B1C35A70F00317032 /* SwiftyJSON.swift in Sources */,
-				D2C6CAB41C39B07900DC0369 /* HipChatConfigFile.swift in Sources */,
+				D22D31411C41A3B600A8A3F0 /* HipChatConfig.swift in Sources */,
 				D28B62EB1C3989D400E03F23 /* WoboUser.swift in Sources */,
 				D2951A5C1C38F56900B7A2F8 /* ImageLoadingWithCache.swift in Sources */,
 			);
