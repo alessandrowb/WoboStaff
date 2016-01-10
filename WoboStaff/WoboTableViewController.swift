@@ -23,7 +23,7 @@ class WoboTableViewController: UITableViewController, UITextFieldDelegate {
         static let woboUsersCellIdentifiers = "WoboUserCell"
         static let dateFormatToSort = "yyyy-MM-dd HH:mm:ss"
         static let dateFormatToDisplay = "M/d/y EEE h:mm:ss a"
-        static let headerColor = UIColor(red: 0.4275, green: 0.6392, blue: 0.7765, alpha: 1.0)
+        static let headerColor = UIColor(red: 0, green: 0.4784, blue: 1, alpha: 1.0) /* #007aff */
         static let headerHeight: CGFloat = 50
         static let headerFontSize: CGFloat = 15
         static let oddRowsColor = UIColor.lightGrayColor()
@@ -296,6 +296,7 @@ class WoboTableViewController: UITableViewController, UITextFieldDelegate {
         title.text = "Local Time: " + thisFormattedTime
         title.textAlignment = NSTextAlignment.Center
         title.backgroundColor = Constants.headerColor
+        title.textColor = UIColor.whiteColor()
         title.font = UIFont.boldSystemFontOfSize(Constants.headerFontSize)
         
         return title
