@@ -14,7 +14,7 @@ class UISettingButton: UIButton {
     
     private struct Constants
     {
-        static let buttonColor = UIColor(red: 0, green: 0.4784, blue: 1, alpha: 1.0) /* #007aff */
+        static let buttonColor = AppColors.generalSystemColor
     }
     
     // MARK: - Init for UISettingButton

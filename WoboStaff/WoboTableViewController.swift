@@ -20,10 +20,11 @@ class WoboTableViewController: UITableViewController, UITextFieldDelegate {
     
     private struct Constants
     {
+        static let mainTitle = "Wobo Staff"
         static let woboUsersCellIdentifiers = "WoboUserCell"
         static let dateFormatToSort = "yyyy-MM-dd HH:mm:ss"
         static let dateFormatToDisplay = "M/d/y EEE h:mm:ss a"
-        static let headerColor = UIColor(red: 0, green: 0.4784, blue: 1, alpha: 1.0) /* #007aff */
+        static let headerColor = AppColors.generalSystemColor
         static let headerHeight: CGFloat = 50
         static let headerFontSize: CGFloat = 15
         static let oddRowsColor = UIColor.lightGrayColor()
@@ -32,6 +33,7 @@ class WoboTableViewController: UITableViewController, UITextFieldDelegate {
         static let defaultUserStatus = "Offline"
         static let noNetworkUserStatus = "Unknown (network not available)"
         static let segueToSettings = "showSettings"
+        static let localTimeString = "Local Time: "
     }
     
     private struct Alerts
@@ -234,7 +236,7 @@ class WoboTableViewController: UITableViewController, UITextFieldDelegate {
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
-        self.navigationItem.title = "Wobo Staff"
+        self.navigationItem.title = Constants.mainTitle
         if hipChatConfig.currentToken == "" {
             //First time the user is running the app
             goToSettings()
@@ -293,7 +295,7 @@ class WoboTableViewController: UITableViewController, UITextFieldDelegate {
         dateFormatter.dateFormat = Constants.dateFormatToDisplay
         let thisFormattedTime = dateFormatter.stringFromDate(thisTitle!)
         
-        title.text = "Local Time: " + thisFormattedTime
+        title.text = Constants.localTimeString + thisFormattedTime
         title.textAlignment = NSTextAlignment.Center
         title.backgroundColor = Constants.headerColor
         title.textColor = UIColor.whiteColor()

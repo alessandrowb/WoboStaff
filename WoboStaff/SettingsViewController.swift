@@ -21,6 +21,11 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         static let landscapeKeyboardHeight: CGFloat = 162;
     }
     
+    private struct Constants
+    {
+        static let noTokenText = "N/A"
+    }
+    
     // MARK: - Outlets
 
     @IBOutlet weak var currentTokenLabel: UILabel!
@@ -77,7 +82,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     {
         super.viewDidLoad()
         if hipChatConfig.currentToken == "" {
-            currentTokenLabel?.text = "N/A"
+            currentTokenLabel?.text = Constants.noTokenText
         }
         else {
             currentTokenLabel?.text = hipChatConfig.currentToken
@@ -90,7 +95,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     {
         if newTokenTextField?.text != nil {
             if newTokenTextField.text!.trim() != "" {
-                hipChatConfig.currentToken = newTokenTextField.text!.trim() as String
+                hipChatConfig.currentToken = newTokenTextField.text!.trim()
                 navigationController?.popViewControllerAnimated(true)
             }
         }
