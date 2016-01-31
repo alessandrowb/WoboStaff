@@ -11,20 +11,3 @@ The app also stores a local copy of the data retrieved and it will try to use it
         <img height="0" width="10px">
         <img width="45%" height="640px" src="/../screenshots/sc2.jpg" alt="Sc2.jpg"</img>
 </div>
-
-
-**ToDo List**
-
-1) Add more users information (eg. online status, title) (DONE)
-
-2) Improved UI (colors, padding) (DONE)
-
-3) Store a cached copy of the images (DONE)
-
-4) Search field to filter the list of users (DONE)
-
-5) When clicking on a specific user, open a new screen with more details
-
-6) Add settings panel to add/update the HipChat API token from the app (DONE)
-
-7) Improve the the settings panel UI
